@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>John Mark R. Gulmayo | IT Support & Homelab Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of John Mark Gulmayo - aspiring IT Support Specialist and homelab system administrator based in Calgary, AB." />
+
+  <!-- ===========================================================
+       GLOBAL STYLES — Typography now fully responsive using clamp()
+       ============================================================== -->
+  <style>
+    :root {
+      --bg: #060714;
+      --bg-alt: #0d1020;
+      --card: #14172b;
+      --accent: #4f8cff;
+      --accent-soft: rgba(79, 140, 255, 0.1);
+      --text: #f5f7ff;
+      --muted: #a4a8c5;
+      --border-subtle: #262a40;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #151832 0, #050612 50%, #020308 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      font-size: clamp(0.9rem, 1.1vw, 1rem);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    /* ===========================================================
+         HEADER + NAV
+       ============================================================== */
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .name {
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 700;
+    }
+
+    .tagline {
+      font-size: clamp(0.75rem, 1.4vw, 0.95rem);
+      color: var(--muted);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: rgba(15, 19, 48, 0.7);
+    }
+
+    nav a:hover {
+      border-color: var(--accent);
+      background: rgba(79, 140, 255, 0.15);
+      text-decoration: none;
+    }
+
+    /* ===========================================================
+         HERO SECTION
+       ============================================================== */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.7fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .hero-main {
+      background: linear-gradient(135deg, rgba(79, 140, 255, 0.16), rgba(6, 10, 32, 0.96));
+      border-radius: var(--radius-lg);
+      padding: 20px 20px 22px;
+      border: 1px solid rgba(104, 130, 255, 0.35);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-kicker {
+      font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .hero-title {
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.82rem, 1.6vw, 1rem);
+      color: var(--muted);
+      max-width: 90%;
+      margin-bottom: 16px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .hero-tag {
+      font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(11, 12, 34, 0.85);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f8cff, #9c6bff);
+      color: white;
+      border: none;
+      box-shadow: 0 8px 25px rgba(79, 140, 255, 0.45);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border-subtle);
+      background: rgba(10, 12, 30, 0.95);
+    }
+
+    .hero-note {
+      font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+      color: var(--muted);
+    }
+
+    .hero-side .info-card {
+      background: rgba(9, 11, 30, 0.96);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+
+    .info-label {
+      font-size: clamp(0.7rem, 1.2vw, 0.78rem);
+      color: var(--muted);
+    }
+
+    .info-main {
+      font-size: clamp(0.85rem, 1.6vw, 1rem);
+    }
+
+    .info-meta {
+      font-size: clamp(0.7rem, 1.2vw, 0.82rem);
+      color: var(--muted);
+    }
+
+    /* ===========================================================
+         MAIN CONTENT COLUMNS
+       ============================================================== */
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.7fr);
+      gap: 24px;
+    }
+
+    section {
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: clamp(1rem, 2.4vw, 1.2rem);
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .card {
+      background: rgba(9, 11, 28, 0.96);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: clamp(0.9rem, 1.8vw, 1rem);
+      font-weight: 600;
+    }
+
+    .card-meta {
+      font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+      color: var(--muted);
+    }
+
+    .card-body {
+      font-size: clamp(0.78rem, 1.6vw, 0.9rem);
+      color: var(--muted);
+    }
+
+    .bullet-list li {
+      margin-bottom: 4px;
+      font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+      color: var(--muted);
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      font-size: clamp(0.7rem, 1.2vw, 0.82rem);
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(18, 20, 46, 0.9);
+    }
+
+    .two-column-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 6px 18px;
+    }
+
+    /* ===========================================================
+         CONTACT BUTTONS
+       ============================================================== */
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .contact-links a {
+      font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(10, 12, 30, 0.95);
+    }
+
+    .contact-links a:hover {
+      border-color: var(--accent);
+    }
+
+    /* ===========================================================
+         FOOTER
+       ============================================================== */
+    footer {
+      margin-top: 26px;
+      text-align: center;
+      font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+      color: var(--muted);
+    }
+
+    /* ===========================================================
+         MOBILE
+       ============================================================== */
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.85rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- ===========================================================
+         HEADER (EDIT NAME / TAGLINE / NAV)
+       ============================================================== -->
+    <header>
+      <div class="brand">
+        <div class="name">John Mark R. Gulmayo</div>
+        <div class="tagline">Aspiring IT Support Specialist · Homelab Enthusiast · Calgary, AB</div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ===========================================================
+         HERO SECTION
+       ============================================================== -->
+    <section class="hero">
+
+      <!-- MAIN HERO -->
+      <div class="hero-main">
+        <div class="hero-kicker">IT Support · Homelab · Networking</div>
+        <h1 class="hero-title">Building real-world IT skills from the ground up.</h1>
+
+        <p class="hero-subtitle">
+          I manage a production-style homelab environment, troubleshoot hardware and network issues,
+          and bring years of customer-facing experience. I’m transitioning into an IT Support /
+          Helpdesk role where I can support users and keep systems running smoothly.
+        </p>
+
+        <div class="hero-tags">
+          <span class="hero-tag">Ubuntu Server</span>
+          <span class="hero-tag">Microsoft 365</span>
+          <span class="hero-tag">Networking</span>
+          <span class="hero-tag">Customer Support</span>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#" class="btn btn-primary">Download Resume</a>
+          <a href="#projects" class="btn btn-outline">View Projects</a>
+        </div>
+
+        <p class="hero-note">
+          Actively seeking an entry-level IT Support / Helpdesk role in Calgary.
+        </p>
+      </div>
+
+      <!-- SIDE INFO -->
+      <div class="hero-side">
+        <div class="info-card">
+          <div class="info-label">Current Focus</div>
+          <div class="info-main">L1 IT Support · MSP environments</div>
+          <div class="info-meta">Learning ticketing workflows + remote tools</div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-label">Latest Projects</div>
+          <div class="info-main">Ubuntu Homelab · Enterprise Wi-Fi Lab</div>
+          <div class="info-meta">Hands-on networking & system admin</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================================================
+         MAIN CONTENT
+       ============================================================== -->
+    <main>
+
+      <!-- ===========================================================
+           LEFT COLUMN — ABOUT / SKILLS / PROJECTS
+         ============================================================== -->
+      <div>
+
+        <!-- ABOUT -->
+        <section id="about">
+          <h2 class="section-title">About Me</h2>
+          <p class="section-subtitle">A customer service professional transitioning into IT.</p>
+
+          <div class="card">
+            <p class="card-body">
+              I'm John, based in Calgary. After years working in hospitality roles requiring strong communication,
+              problem-solving, and reliability, I began building a homelab to learn IT the hands-on way. Now I troubleshoot
+              real hardware & software issues, run servers, and manage network services.
+            </p>
+
+            <p class="card-body" style="margin-top: 8px;">
+              My goal is to bring my service mindset and technical curiosity into a professional IT Support role
+              where I can grow into system or network administration.
+            </p>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+          <h2 class="section-title">Technical & Professional Skills</h2>
+          <p class="section-subtitle">A blend of hands-on IT and customer-focused experience.</p>
+
+          <!-- Technical -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Technical Skills</div>
+            </div>
+            <div class="card-body">
+              <div class="two-column-list">
+
+                <div>
+                  <strong>Systems & OS</strong><br>
+                  Ubuntu Server 22.04 LTS<br>
+                  Windows 10/11 · macOS<br>
+                  Command Line (CLI)
+                </div>
+
+                <div>
+                  <strong>Networking</strong><br>
+                  TCP/IP · DNS basics<br>
+                  VPN & remote access<br>
+                  Home network design
+                </div>
+
+                <div>
+                  <strong>Services</strong><br>
+                  Pi-hole (DNS filtering)<br>
+                  Nextcloud (cloud server)<br>
+                  Remote Desktop · SSH
+                </div>
+
+                <div>
+                  <strong>Hardware</strong><br>
+                  PC building & upgrades<br>
+                  RAM / CPU installation<br>
+                  Troubleshooting
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Professional Skills</div>
+            </div>
+            <ul class="bullet-list card-body">
+              <li>First point of contact experience similar to IT support.</li>
+              <li>Calm under pressure with strong communication.</li>
+              <li>Team coordination in fast environments.</li>
+              <li>Clear explanations for non-technical people.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+          <h2 class="section-title">Technical Projects</h2>
+          <p class="section-subtitle">Hands-on projects demonstrating real IT experience.</p>
+
+          <!-- Homelab -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Ubuntu Homelab Server</div>
+              <div class="card-meta">System Administration</div>
+            </div>
+            <div class="card-body">
+              <ul class="bullet-list">
+                <li>Self-hosted DNS filtering with Pi-hole.</li>
+                <li>Private cloud storage using Nextcloud.</li>
+                <li>24/7 game server management via AMP.</li>
+                <li>Remote server admin via SSH.</li>
+              </ul>
+
+              <div class="pill-list">
+                <span class="pill">Ubuntu Server</span>
+                <span class="pill">SSH</span>
+                <span class="pill">Pi-hole</span>
+                <span class="pill">Nextcloud</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enterprise Wi-Fi -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Enterprise Wi-Fi Lab</div>
+              <div class="card-meta">Networking</div>
+            </div>
+            <div class="card-body">
+              <ul class="bullet-list">
+                <li>Learning enterprise access point deployment.</li>
+                <li>Planning VLAN segmentation & multiple SSIDs.</li>
+                <li>Studying PoE, RF behavior, and AP onboarding.</li>
+              </ul>
+
+              <div class="pill-list">
+                <span class="pill">Networking</span>
+                <span class="pill">Enterprise Wi-Fi</span>
+                <span class="pill">VLANs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom PC Build -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Custom Gaming PC Build</div>
+              <div class="card-meta">Hardware</div>
+            </div>
+            <div class="card-body">
+              <ul class="bullet-list">
+                <li>Selected components and verified compatibility.</li>
+                <li>Assembled full system with cable management.</li>
+                <li>Installed OS, drivers, and monitoring tools.</li>
+                <li>Troubleshot RGB/BIOS/driver issues.</li>
+              </ul>
+
+              <div class="pill-list">
+                <span class="pill">PC Building</span>
+                <span class="pill">Troubleshooting</span>
+                <span class="pill">Hardware</span>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </div>
+
+      <!-- ===========================================================
+           RIGHT COLUMN — EXPERIENCE / ROADMAP / CONTACT
+         ============================================================== -->
+      <div>
+
+        <!-- EXPERIENCE -->
+        <section id="experience">
+          <h2 class="section-title">Experience</h2>
+          <p class="section-subtitle">Hospitality roles with strong IT support overlap.</p>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Bellman / Valet Attendant</div>
+              <div class="card-meta">Residence Inn Calgary Downtown · 2023–Present</div>
+            </div>
+            <ul class="bullet-list card-body">
+              <li>Served as first point of contact for guest issues.</li>
+              <li>Coordinated with front desk & departments.</li>
+              <li>Maintained organized workspaces & processes.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Houseperson / Operations Support</div>
+              <div class="card-meta">2021–2024</div>
+            </div>
+
+            <ul class="bullet-list card-body">
+              <li>Used task apps similar to ticketing systems.</li>
+              <li>Managed inventory & followed procedures.</li>
+              <li>Strong time management and reliability.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Education & Certifications</div>
+            </div>
+            <ul class="bullet-list card-body">
+              <li>High School Diploma – St. Mary’s High School.</li>
+              <li>First Aid & WHMIS Certified.</li>
+              <li>Class 5 Driver’s License.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- LEARNING ROADMAP -->
+        <section id="roadmap">
+          <h2 class="section-title">Learning Roadmap</h2>
+          <p class="section-subtitle">Where I’m heading next.</p>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Short-Term (0–6 Months)</div>
+            </div>
+            <ul class="bullet-list card-body">
+              <li>Land first IT Support / Helpdesk role.</li>
+              <li>Continue homelab expansion.</li>
+              <li>Study for CompTIA A+.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Mid-Term (6–18 Months)</div>
+            </div>
+            <ul class="bullet-list card-body">
+              <li>Grow into junior SysAdmin roles.</li>
+              <li>Deepen networking knowledge (Net+).</li>
+              <li>Gain ticketing system experience.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Long-Term (2+ Years)</div>
+            </div>
+            <ul class="bullet-list card-body">
+              <li>Become System or Network Administrator.</li>
+              <li>Earn more certifications (Azure, Security+).</li>
+              <li>Run advanced homelab environments.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-subtitle">Open to IT Support opportunities in Calgary.</p>
+
+          <div class="card">
+            <p class="card-body">
+              Feel free to reach out if you'd like to talk about opportunities,
+              my homelab projects, or how I can help your team.
+            </p>
+
+            <div class="contact-links">
+              <a href="mailto:janmattew102@yahoo.com">Email</a>
+              <a href="https://www.linkedin.com/in/johnmark-gulmayo-85181a383" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      Built by John Mark R. Gulmayo · Personal homelab projects only — no production client data.
+    </footer>
+
+  </div>
+</body>
+</html>
