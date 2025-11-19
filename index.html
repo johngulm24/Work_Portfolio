@@ -6,191 +6,466 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio of John Mark Gulmayo - aspiring IT Support Specialist and homelab system administrator based in Calgary, AB." />
 
+  <!-- ===========================================================
+       GLOBAL STYLES — Typography responsive using clamp()
+  ============================================================== -->
   <style>
     :root {
       --bg: #060714;
       --bg-alt: #0d1020;
       --card: #14172b;
       --accent: #4f8cff;
-      --accent-soft: rgba(79,140,255,0.15);
-      --text: #e6e9f5;
+      --accent-soft: rgba(79, 140, 255, 0.1);
+      --text: #f5f7ff;
       --muted: #a4a8c5;
       --border-subtle: #262a40;
       --radius-lg: 14px;
       --radius-md: 10px;
-      --shadow-soft: 0 18px 45px rgba(0,0,0,0.45);
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
       --max-width: 1080px;
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #151832 0%, #050612 50%, #020308 100%);
+      background: radial-gradient(circle at top, #151832 0, #050612 50%, #020308 100%);
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      font-size: clamp(0.9rem, 1.1vw, 1rem);
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
-    .page { max-width: var(--max-width); margin:0 auto; padding:24px 16px 60px; }
+    a:hover {
+      text-decoration: underline;
+    }
 
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    /* ===========================================================
+         HEADER + NAV
+       ============================================================== */
     header {
-      display:flex; align-items:center; justify-content:space-between;
-      flex-wrap:wrap; gap:16px; margin-bottom:32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
-    .brand .name { font-size:1.9rem; font-weight:700; }
-    .brand .tagline { font-size:0.9rem; color:var(--muted); }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
 
-    nav ul { list-style:none; display:flex; flex-wrap:wrap; gap:12px; }
+    .name {
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 700;
+    }
+
+    .tagline {
+      font-size: clamp(0.75rem, 1.4vw, 0.95rem);
+      color: var(--muted);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
     nav a {
-      color:var(--text); font-size:0.85rem; padding:6px 12px;
-      border-radius:999px; background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: rgba(15, 19, 48, 0.7);
     }
-    nav a:hover { background:var(--accent-soft); border-color:var(--accent); text-decoration:none; }
 
+    nav a:hover {
+      border-color: var(--accent);
+      background: rgba(79, 140, 255, 0.15);
+      text-decoration: none;
+    }
+
+    /* ===========================================================
+         HERO SECTION
+       ============================================================== */
     .hero {
-      display:grid; grid-template-columns:2.2fr 1.4fr;
-      gap:24px; margin-bottom:32px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.7fr);
+      gap: 24px;
+      margin-bottom: 32px;
     }
 
     .hero-main {
-      background: linear-gradient(135deg, rgba(79, 140, 255, 0.18), rgba(6, 10, 32, 0.98));
+      background: linear-gradient(135deg, rgba(79, 140, 255, 0.16), rgba(6, 10, 32, 0.96));
       border-radius: var(--radius-lg);
-      padding: 20px 20px 10px;
-      border: 1px solid rgba(104,130,255,0.35);
+      padding: 20px 20px 10px; /* tightened bottom padding */
+      border: 1px solid rgba(104, 130, 255, 0.35);
       box-shadow: var(--shadow-soft);
     }
 
-    .hero-kicker { font-size:0.7rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
-    .hero-title { font-size:2rem; font-weight:700; margin-bottom:10px; }
-    .hero-subtitle { color:var(--muted); margin-bottom:16px; }
-
-    .hero-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
-    .hero-tag {
-      padding:4px 10px; border-radius:999px;
-      background:rgba(11,12,34,0.9); border:1px solid rgba(255,255,255,0.12);
-      font-size:0.75rem;
+    .hero-kicker {
+      font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 6px;
     }
 
-    .hero-cta { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:4px; }
+    .hero-title {
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.82rem, 1.6vw, 1rem);
+      color: var(--muted);
+      max-width: 90%;
+      margin-bottom: 16px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .hero-tag {
+      font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(11, 12, 34, 0.85);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 4px; /* smaller gap above hero-note */
+    }
 
     .btn {
-      padding:8px 14px; border-radius:999px; font-size:0.85rem;
-      cursor:pointer; border:1px solid transparent; transition:0.2s ease;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.18s ease;
     }
-    .btn-primary {
-      background:linear-gradient(135deg,#4f8cff,#9c6bff);
-      color:white; border:none; box-shadow:0 8px 25px rgba(79,140,255,0.45);
-    }
-    .btn-outline { border:1px solid var(--border-subtle); background:rgba(10,12,30,0.96); color:var(--text); }
-    .btn:hover { transform:translateY(-2px); }
 
-    .hero-note { font-size:0.8rem; color:var(--muted); margin-top:4px; }
+    .btn-primary {
+      background: linear-gradient(135deg, #4f8cff, #9c6bff);
+      color: white;
+      border: none;
+      box-shadow: 0 8px 25px rgba(79, 140, 255, 0.45);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border-subtle);
+      background: rgba(10, 12, 30, 0.95);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-note {
+      font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+      color: var(--muted);
+      margin-top: 2px;
+    }
 
     .hero-side .info-card {
-      background:rgba(9,11,30,0.96); border-radius:var(--radius-md);
-      border:1px solid var(--border-subtle); padding:12px 14px; margin-bottom:12px;
+      background: rgba(9, 11, 30, 0.96);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 14px;
+      margin-bottom: 12px;
     }
-    .info-label { font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px; }
-    .info-main { font-size:0.9rem; }
-    .info-meta { font-size:0.8rem; color:var(--muted); }
 
-    main { display:grid; grid-template-columns:2.1fr 1.7fr; gap:24px; }
+    .info-label {
+      font-size: clamp(0.7rem, 1.2vw, 0.78rem);
+      color: var(--muted);
+    }
 
-    section { margin-bottom:22px; }
-    .section-title { font-size:1.25rem; margin-bottom:6px; }
-    .section-subtitle { font-size:0.9rem; color:var(--muted); margin-bottom:10px; }
+    .info-main {
+      font-size: clamp(0.85rem, 1.6vw, 1rem);
+    }
+
+    .info-meta {
+      font-size: clamp(0.7rem, 1.2vw, 0.82rem);
+      color: var(--muted);
+    }
+
+    /* ===========================================================
+         MAIN CONTENT COLUMNS
+       ============================================================== */
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.7fr);
+      gap: 24px;
+    }
+
+    section {
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: clamp(1rem, 2.4vw, 1.2rem);
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
 
     .card {
-      background:rgba(9,11,28,0.96); border-radius:var(--radius-md);
-      padding:12px 14px; border:1px solid var(--border-subtle); margin-bottom:12px;
+      background: rgba(9, 11, 28, 0.96);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      border: 1px solid var(--border-subtle);
     }
-    .card-header { display:flex; justify-content:space-between; gap:8px; margin-bottom:4px; }
-    .card-title { font-size:1rem; font-weight:600; }
-    .card-meta { font-size:0.8rem; color:var(--muted); }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: clamp(0.9rem, 1.8vw, 1rem);
+      font-weight: 600;
+    }
+
+    .card-meta {
+      font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+      color: var(--muted);
+    }
+
+    .card-body {
+      font-size: clamp(0.78rem, 1.6vw, 0.9rem);
+      color: var(--muted);
+    }
 
     .bullet-list li {
-      margin-bottom:4px; padding-left:14px; position:relative;
-      font-size:0.9rem; color:var(--muted);
-    }
-    .bullet-list li::before {
-      content:"•"; position:absolute; left:0; top:0; color:var(--accent);
+      margin-bottom: 4px;
+      font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+      color: var(--muted);
+      padding-left: 14px;
+      position: relative;
     }
 
-    .pill-list { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
     .pill {
-      font-size:0.8rem; padding:3px 8px; border-radius:999px;
-      border:1px solid rgba(255,255,255,0.1); background:rgba(18,20,46,0.9);
+      font-size: clamp(0.7rem, 1.2vw, 0.82rem);
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(18, 20, 46, 0.9);
     }
 
     .two-column-list {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px 18px;
-      font-size:0.9rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 6px 18px;
     }
 
-    .contact-links { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    /* ===========================================================
+         CONTACT BUTTONS
+       ============================================================== */
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
     .contact-links a {
-      font-size:0.8rem; padding:6px 10px; border-radius:999px;
-      border:1px solid var(--border-subtle); background:rgba(10,12,30,0.95); color:var(--text);
+      font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(10, 12, 30, 0.95);
     }
-    .contact-links a:hover { border-color:var(--accent); text-decoration:none; }
 
-    footer { margin-top:26px; text-align:center; font-size:0.8rem; color:var(--muted); }
-
-    .fade-in { opacity:0; transform:translateY(15px); transition:0.6s; }
-    .fade-in.visible { opacity:1; transform:translateY(0); }
-
-    /* Modal */
-    .modal{
-      position:fixed; inset:0; background:rgba(0,0,0,0.75);
-      display:none; justify-content:center; align-items:center;
-      padding:20px; z-index:9999;
+    .contact-links a:hover {
+      border-color: var(--accent);
     }
-    .modal.is-open{ display:flex; }
-    .modal-dialog{
-      width:min(900px,95%); max-height:90%;
-      background:#23345c; border-radius:12px;
-      padding:20px 22px; position:relative;
-      box-shadow:0 12px 35px rgba(0,0,0,0.4);
-      border:1px solid rgba(255,255,255,0.1);
-      overflow:hidden;
-    }
-    .modal-title{ font-size:1.2rem; margin-bottom:12px; }
-    .modal-body{ height:70vh; border-radius:10px; overflow:hidden; }
-    .modal-body iframe{ width:100%; height:100%; border:none; background:#1a2440; }
-    .modal-close{
-      position:absolute; top:10px; right:14px;
-      font-size:1.6rem; background:none; border:none;
-      color:white; cursor:pointer;
-    }
-    .modal-note{ margin-top:8px; color:#dbe3ff; font-size:0.85rem; }
 
-    @media (max-width:700px){
-      .hero, main { grid-template-columns:1fr; }
-      .hero-cta { flex-direction:column; }
-      .hero-cta .btn { width:100%; text-align:center; }
+    /* ===========================================================
+         FOOTER
+       ============================================================== */
+    footer {
+      margin-top: 26px;
+      text-align: center;
+      font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+      color: var(--muted);
+    }
+
+    /* ===========================================================
+         FADE-IN ANIMATION
+       ============================================================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===========================================================
+         RESUME MODAL
+       ============================================================== */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 9999;
+    }
+
+    .modal.is-open {
+      display: flex;
+    }
+
+    .modal-dialog {
+      background: #23345c;
+      width: min(900px, 95%);
+      max-height: 90%;
+      border-radius: 12px;
+      padding: 20px 22px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-title {
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .modal-body {
+      height: 70vh;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .modal-body iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #1a2440;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 1.6rem;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .modal-note {
+      font-size: 0.85rem;
+      margin-top: 8px;
+      color: #d7dfff;
+    }
+
+    /* ===========================================================
+         MOBILE
+       ============================================================== */
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.85rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="page">
 
+    <!-- ===========================================================
+         HEADER (EDIT NAME / TAGLINE / NAV)
+       ============================================================== -->
     <header class="fade-in">
       <div class="brand">
         <div class="name">John Mark R. Gulmayo</div>
         <div class="tagline">Aspiring IT Support Specialist · Homelab Enthusiast · Calgary, AB</div>
       </div>
+
       <nav>
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#blog">Blog</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#roadmap">Roadmap</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -198,76 +473,105 @@
       </nav>
     </header>
 
+    <!-- ===========================================================
+         HERO SECTION
+       ============================================================== -->
     <section class="hero fade-in">
+      <!-- MAIN HERO -->
       <div class="hero-main">
         <div class="hero-kicker">IT Support · Homelab · Networking</div>
         <h1 class="hero-title">Building real-world IT skills from the ground up.</h1>
+
         <p class="hero-subtitle">
           I manage a production-style homelab environment, troubleshoot hardware and network issues,
-          and bring years of customer-facing experience. I’m transitioning into an IT Support /
-          Helpdesk role where I can support users and keep systems running smoothly.
+          and bring years of customer-facing experience. I’m transitioning into an IT Support / Helpdesk role
+          where I can support users and keep systems running smoothly.
         </p>
+
         <div class="hero-tags">
           <span class="hero-tag">Ubuntu Server</span>
           <span class="hero-tag">Microsoft 365</span>
           <span class="hero-tag">Networking</span>
           <span class="hero-tag">Customer Support</span>
         </div>
+
         <div class="hero-cta">
           <button class="btn btn-primary" id="openResumeBtn">View Resume</button>
           <a href="#projects" class="btn btn-outline">View Projects</a>
         </div>
-        <p class="hero-note">Actively seeking an entry-level IT Support / Helpdesk role in Calgary.</p>
+
+        <p class="hero-note">
+          Actively seeking an entry-level IT Support / Helpdesk role in Calgary.
+        </p>
       </div>
 
+      <!-- SIDE INFO -->
       <div class="hero-side">
         <div class="info-card">
           <div class="info-label">Current Focus</div>
-          <div class="info-main">Polishing portfolio & IT fundamentals</div>
-          <div class="info-meta">Preparing for IT Support opportunities</div>
+          <div class="info-main">Touching up portfolio & fundamentals</div>
+          <div class="info-meta"></div>
         </div>
+
         <div class="info-card">
           <div class="info-label">Latest Projects</div>
           <div class="info-main">Ubuntu Homelab · Enterprise Wi-Fi Lab</div>
-          <div class="info-meta">Hands-on networking & system admin</div>
+          <div class="info-meta">Hands-on Networking & System Admin</div>
         </div>
+
         <div class="info-card">
-          <div class="info-label">Future Projects</div>
-          <div class="info-main">Mini Server Rack Build</div>
-          <div class="info-meta">Advanced networking & homelab expansion</div>
+          <div class="info-label">Later Projects</div>
+          <div class="info-main">Compact Mini Server Rack</div>
+          <div class="info-meta">Advanced Networking & System Admin</div>
         </div>
+
         <div class="info-card">
-          <div class="info-label">Certifications In Progress</div>
-          <div class="info-main">Google IT Support · A+ · Network+</div>
-          <div class="info-meta">Working toward CCNA & Security+</div>
+          <div class="info-label">Future Plans</div>
+          <div class="info-main">Industry IT Certifications</div>
+          <div class="info-meta">Google IT Support · CompTIA A+ · Network+ · CCNA</div>
         </div>
       </div>
     </section>
 
+    <!-- ===========================================================
+         MAIN CONTENT
+       ============================================================== -->
     <main>
+
+      <!-- ===========================================================
+           LEFT COLUMN — ABOUT / SKILLS / PROJECTS
+         ============================================================== -->
       <div>
+
+        <!-- ABOUT -->
         <section id="about" class="fade-in">
           <h2 class="section-title">About Me</h2>
           <p class="section-subtitle">A customer service professional transitioning into IT.</p>
+
           <div class="card">
-            <p>
+            <p class="card-body">
               I'm John, based in Calgary. After years working in hospitality roles requiring strong communication,
               problem-solving, and reliability, I began building a homelab to learn IT the hands-on way. Now I troubleshoot
               real hardware & software issues, run servers, and manage network services.
-            </p><br>
-            <p>
+            </p>
+
+            <p class="card-body" style="margin-top: 8px;">
               My goal is to bring my service mindset and technical curiosity into a professional IT Support role
               where I can grow into system or network administration.
             </p>
           </div>
         </section>
 
+        <!-- SKILLS -->
         <section id="skills" class="fade-in">
           <h2 class="section-title">Technical & Professional Skills</h2>
           <p class="section-subtitle">A blend of hands-on IT and customer-focused experience.</p>
 
+          <!-- Technical -->
           <div class="card">
-            <div class="card-header"><div class="card-title">Technical Skills</div></div>
+            <div class="card-header">
+              <div class="card-title">Technical Skills</div>
+            </div>
             <div class="card-body">
               <div class="two-column-list">
                 <div>
@@ -276,18 +580,21 @@
                   Windows 10/11 · macOS<br>
                   Command Line (CLI)
                 </div>
+
                 <div>
                   <strong>Networking</strong><br>
                   TCP/IP · DNS basics<br>
                   VPN & remote access<br>
                   Home network design
                 </div>
+
                 <div>
                   <strong>Services</strong><br>
                   Pi-hole (DNS filtering)<br>
                   Nextcloud (cloud server)<br>
                   Remote Desktop · SSH
                 </div>
+
                 <div>
                   <strong>Hardware</strong><br>
                   PC building & upgrades<br>
@@ -298,8 +605,11 @@
             </div>
           </div>
 
+          <!-- Soft Skills -->
           <div class="card">
-            <div class="card-header"><div class="card-title">Professional Skills</div></div>
+            <div class="card-header">
+              <div class="card-title">Professional Skills</div>
+            </div>
             <ul class="bullet-list card-body">
               <li>First point of contact experience similar to IT support.</li>
               <li>Calm under pressure with strong communication.</li>
@@ -309,80 +619,86 @@
           </div>
         </section>
 
+        <!-- PROJECTS -->
         <section id="projects" class="fade-in">
           <h2 class="section-title">Technical Projects</h2>
           <p class="section-subtitle">Hands-on projects demonstrating real IT experience.</p>
 
+          <!-- Homelab -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Ubuntu Homelab Server</div>
               <div class="card-meta">System Administration</div>
             </div>
-            <ul class="bullet-list card-body">
-              <li>Self-hosted DNS filtering with Pi-hole.</li>
-              <li>Private cloud storage using Nextcloud.</li>
-              <li>24/7 game server management via AMP.</li>
-              <li>Remote server admin via SSH.</li>
-            </ul>
-            <div class="pill-list">
-              <span class="pill">Ubuntu</span><span class="pill">SSH</span>
-              <span class="pill">Pi-hole</span><span class="pill">Nextcloud</span>
+            <div class="card-body">
+              <ul class="bullet-list">
+                <li>Self-hosted DNS filtering with Pi-hole.</li>
+                <li>Private cloud storage using Nextcloud.</li>
+                <li>24/7 game server management via AMP.</li>
+                <li>Remote server admin via SSH.</li>
+              </ul>
+
+              <div class="pill-list">
+                <span class="pill">Ubuntu Server</span>
+                <span class="pill">SSH</span>
+                <span class="pill">Pi-hole</span>
+                <span class="pill">Nextcloud</span>
+              </div>
             </div>
           </div>
 
+          <!-- Enterprise Wi-Fi -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Enterprise Wi-Fi Lab</div>
               <div class="card-meta">Networking</div>
             </div>
-            <ul class="bullet-list card-body">
-              <li>Learning enterprise AP deployment and RF behavior.</li>
-              <li>Planning VLAN segmentation & multiple SSIDs.</li>
-              <li>Studying PoE, switching, and AP onboarding.</li>
-            </ul>
-            <div class="pill-list">
-              <span class="pill">Enterprise Wi-Fi</span>
-              <span class="pill">VLANs</span>
-              <span class="pill">PoE</span>
+            <div class="card-body">
+              <ul class="bullet-list">
+                <li>Learning enterprise access point deployment.</li>
+                <li>Planning VLAN segmentation & multiple SSIDs.</li>
+                <li>Studying PoE, RF behavior, and AP onboarding.</li>
+              </ul>
+
+              <div class="pill-list">
+                <span class="pill">Networking</span>
+                <span class="pill">Enterprise Wi-Fi</span>
+                <span class="pill">VLANs</span>
+              </div>
             </div>
           </div>
 
+          <!-- Custom PC Build -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Custom Gaming PC Build</div>
               <div class="card-meta">Hardware</div>
             </div>
-            <ul class="bullet-list card-body">
-              <li>Selected compatible components.</li>
-              <li>Assembled and cable-managed full system.</li>
-              <li>Installed OS, drivers, tools, and monitoring software.</li>
-              <li>Troubleshot BIOS, boot, and RGB issues.</li>
-            </ul>
-            <div class="pill-list">
-              <span class="pill">Hardware</span><span class="pill">Troubleshooting</span>
+            <div class="card-body">
+              <ul class="bullet-list">
+                <li>Selected components and verified compatibility.</li>
+                <li>Assembled full system with cable management.</li>
+                <li>Installed OS, drivers, and monitoring tools.</li>
+                <li>Troubleshot RGB/BIOS/driver issues.</li>
+              </ul>
+
+              <div class="pill-list">
+                <span class="pill">PC Building</span>
+                <span class="pill">Troubleshooting</span>
+                <span class="pill">Hardware</span>
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="blog" class="fade-in">
-          <h2 class="section-title">Technical Blog</h2>
-          <p class="section-subtitle">Documenting what I learn — great for IT interviews.</p>
-          <div class="card">
-            <h3 style="margin-bottom:10px;">📘 Blog Coming Soon</h3>
-            <p class="card-body">
-              I’ll use this space to write about homelab builds, troubleshooting wins,
-              and networking concepts explained in simple language.
-            </p>
-            <ul class="bullet-list card-body">
-              <li>How I deployed Pi-hole and fixed DNS issues.</li>
-              <li>Self-hosting Nextcloud on Ubuntu.</li>
-              <li>What I learned building my first enterprise Wi-Fi lab.</li>
-            </ul>
-          </div>
-        </section>
       </div>
 
+      <!-- ===========================================================
+           RIGHT COLUMN — EXPERIENCE / ROADMAP / CONTACT
+         ============================================================== -->
       <div>
+
+        <!-- EXPERIENCE -->
         <section id="experience" class="fade-in">
           <h2 class="section-title">Experience</h2>
           <p class="section-subtitle">Hospitality roles with strong IT support overlap.</p>
@@ -393,40 +709,46 @@
               <div class="card-meta">Residence Inn Calgary Downtown · 2023–Present</div>
             </div>
             <ul class="bullet-list card-body">
-              <li>First point of contact for guests — similar to IT Tier 1 support.</li>
-              <li>Coordinated with team to resolve issues quickly.</li>
-              <li>Maintained a clean, organized, and professional environment.</li>
+              <li>Acted as the first point of contact for guests, providing warm welcomes and promptly resolving inquiries and concerns.</li>
+              <li>Coordinated seamlessly with the front desk and other departments to ensure a seamless and positive guest experience.</li>
+              <li>Maintained a clean and organized environment, ensuring a professional and welcoming atmosphere.</li>
             </ul>
           </div>
 
           <div class="card">
             <div class="card-header">
-              <div class="card-title">Houseperson / Environmental Support</div>
-              <div class="card-meta">Calgary Hotels · 2021–2024</div>
+              <div class="card-title">Houseperson / Guest Environmental Expert</div>
+              <div class="card-meta">Calgary Downtown Hotels · 2021–2024</div>
             </div>
+
             <ul class="bullet-list card-body">
-              <li>Handled fast-paced task management and communication.</li>
-              <li>Used apps like Zello & HotSOS — similar to ticketing systems.</li>
-              <li>Managed inventory and streamlined workflows.</li>
+              <li>Held progressive responsibilities requiring strong communication, attention to detail, time management, and a commitment to excellence.</li>
+              <li>Utilized mobile apps (Zello and HotSOS) for real-time communication and task coordination, showing adaptability with digital tools and workflows.</li>
+              <li>Managed inventory levels and implemented efficient procedures for linens and other supplies.</li>
             </ul>
           </div>
 
           <div class="card">
-            <div class="card-header"><div class="card-title">Education & Certifications</div></div>
+            <div class="card-header">
+              <div class="card-title">Education & Certifications</div>
+            </div>
             <ul class="bullet-list card-body">
-              <li>High School Diploma – St. Mary’s High School</li>
-              <li>First Aid & WHMIS Certified</li>
-              <li>Class 5 Driver’s License</li>
+              <li>High School Diploma – St. Mary’s High School.</li>
+              <li>First Aid & WHMIS Certified.</li>
+              <li>Class 5 Driver’s License.</li>
             </ul>
           </div>
         </section>
 
+        <!-- LEARNING ROADMAP -->
         <section id="roadmap" class="fade-in">
           <h2 class="section-title">Learning Roadmap</h2>
           <p class="section-subtitle">Where I’m heading next.</p>
 
           <div class="card">
-            <div class="card-header"><div class="card-title">Short-Term (0–6 Months)</div></div>
+            <div class="card-header">
+              <div class="card-title">Short-Term (0–6 Months)</div>
+            </div>
             <ul class="bullet-list card-body">
               <li>Land first IT Support / Helpdesk role.</li>
               <li>Continue homelab expansion.</li>
@@ -435,32 +757,39 @@
           </div>
 
           <div class="card">
-            <div class="card-header"><div class="card-title">Mid-Term (6–18 Months)</div></div>
+            <div class="card-header">
+              <div class="card-title">Mid-Term (6–18 Months)</div>
+            </div>
             <ul class="bullet-list card-body">
               <li>Grow into junior SysAdmin roles.</li>
-              <li>Deepen networking knowledge (Net+ level).</li>
-              <li>Gain experience with ticketing systems & remote tools.</li>
+              <li>Deepen networking knowledge (Net+).</li>
+              <li>Gain ticketing system experience.</li>
             </ul>
           </div>
 
           <div class="card">
-            <div class="card-header"><div class="card-title">Long-Term (2+ Years)</div></div>
+            <div class="card-header">
+              <div class="card-title">Long-Term (2+ Years)</div>
+            </div>
             <ul class="bullet-list card-body">
-              <li>Become a System or Network Administrator.</li>
-              <li>Earn more certifications (Azure, Security+, CCNA).</li>
-              <li>Build advanced enterprise-style homelabs.</li>
+              <li>Become System or Network Administrator.</li>
+              <li>Earn more certifications (Azure, Security+).</li>
+              <li>Run advanced homelab environments.</li>
             </ul>
           </div>
         </section>
 
+        <!-- CONTACT -->
         <section id="contact" class="fade-in">
           <h2 class="section-title">Contact</h2>
           <p class="section-subtitle">Open to IT Support opportunities in Calgary.</p>
+
           <div class="card">
-            <p>
+            <p class="card-body">
               Feel free to reach out if you'd like to talk about opportunities,
               my homelab projects, or how I can help your team.
             </p>
+
             <div class="contact-links">
               <a href="mailto:janmattew102@yahoo.com">Email</a>
               <a href="https://www.linkedin.com/in/johnmark-gulmayo-85181a383" target="_blank">LinkedIn</a>
@@ -468,21 +797,30 @@
           </div>
         </section>
       </div>
+
     </main>
 
+    <!-- FOOTER -->
     <footer class="fade-in">
       Built by John Mark R. Gulmayo · Personal homelab projects only — no production client data.
     </footer>
 
   </div>
 
+  <!-- ===========================================================
+       RESUME MODAL (PDF VIEWER)
+     ============================================================== -->
   <div id="resumeModal" class="modal" aria-hidden="true">
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
       <button class="modal-close" type="button" aria-label="Close resume viewer">&times;</button>
+
       <h2 class="modal-title" id="resumeModalTitle">Resume – John Mark R. Gulmayo</h2>
+
       <div class="modal-body">
+        <!-- Your PDF file must be in the same folder as index.html -->
         <iframe src="Updated_Resume_portfolio.pdf" title="Resume PDF Viewer"></iframe>
       </div>
+
       <p class="modal-note">
         If the PDF doesn’t load, you can
         <a href="Updated_Resume_portfolio.pdf" target="_blank" rel="noopener noreferrer">open it in a new tab</a>.
@@ -490,10 +828,14 @@
     </div>
   </div>
 
+  <!-- ===========================================================
+       SCRIPT – Fade-in + Resume Modal
+     ============================================================== -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      /* Fade-in on scroll */
       const fadeEls = document.querySelectorAll(".fade-in");
-      const observer = new IntersectionObserver(entries => {
+      const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
@@ -501,8 +843,10 @@
           }
         });
       }, { threshold: 0.15 });
+
       fadeEls.forEach(el => observer.observe(el));
 
+      /* Resume modal behaviour */
       const modal = document.getElementById("resumeModal");
       const openBtn = document.getElementById("openResumeBtn");
       const closeBtn = modal.querySelector(".modal-close");
@@ -512,17 +856,24 @@
         modal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
       }
+
       function closeModal() {
         modal.classList.remove("is-open");
         modal.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
       }
 
-      openBtn.addEventListener("click", openModal);
+      if (openBtn) openBtn.addEventListener("click", openModal);
       closeBtn.addEventListener("click", closeModal);
-      modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
-      document.addEventListener("keydown", e => {
-        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModal();
+        }
       });
     });
   </script>
