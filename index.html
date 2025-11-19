@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,33 +7,45 @@
   <meta name="description" content="Portfolio of John Mark Gulmayo - aspiring IT Support Specialist and homelab system administrator based in Calgary, AB." />
 
   <!-- ===========================================================
-       GLOBAL STYLES — Typography now fully responsive using clamp()
+       GLOBAL STYLES
+       - Colors, typography, layout.
+       - Main things you'll edit later:
+         * Color variables in :root
+         * Section content in HTML
        ============================================================== -->
   <style>
+    /* ===========================================================
+       COLOR THEME (Change these to restyle the whole site)
+       =========================================================== */
     :root {
-      --bg: #060714;
-      --bg-alt: #0d1020;
-      --card: #14172b;
-      --accent: #4f8cff;
-      --accent-soft: rgba(79, 140, 255, 0.1);
-      --text: #f5f7ff;
-      --muted: #a4a8c5;
-      --border-subtle: #262a40;
+      --bg: #112d4e;           /* Main page background (dark blue) */
+      --bg-alt: #1e3a66;       /* Top gradient color / alt background */
+      --card: #243b69;         /* Card background */
+      --accent: #4f8cff;       /* Accent blue for links, bullets, buttons */
+      --accent-soft: rgba(79, 140, 255, 0.12);
+      --text: #f0f5ff;         /* Main text color */
+      --muted: #c4d2f2;        /* Subtle/secondary text */
+      --border-subtle: #2c4880;/* Card borders, subtle lines */
       --radius-lg: 14px;
       --radius-md: 10px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.35);
       --max-width: 1080px;
     }
 
+    /* Global reset */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    /* ===========================================================
+       BODY
+       - Global font, page background, base font size.
+       =========================================================== */
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #151832 0, #050612 50%, #020308 100%);
+      background: radial-gradient(circle at top, var(--bg-alt) 0, var(--bg) 55%, #050612 100%);
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -96,12 +107,12 @@
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid transparent;
-      background: rgba(15, 19, 48, 0.7);
+      background: rgba(15, 27, 72, 0.8);
     }
 
     nav a:hover {
       border-color: var(--accent);
-      background: rgba(79, 140, 255, 0.15);
+      background: rgba(79, 140, 255, 0.2);
       text-decoration: none;
     }
 
@@ -116,10 +127,10 @@
     }
 
     .hero-main {
-      background: linear-gradient(135deg, rgba(79, 140, 255, 0.16), rgba(6, 10, 32, 0.96));
+      background: linear-gradient(135deg, rgba(79, 140, 255, 0.18), rgba(13, 28, 81, 0.98));
       border-radius: var(--radius-lg);
       padding: 20px 20px 22px;
-      border: 1px solid rgba(104, 130, 255, 0.35);
+      border: 1px solid rgba(104, 130, 255, 0.4);
       box-shadow: var(--shadow-soft);
     }
 
@@ -156,7 +167,7 @@
       padding: 4px 10px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(11, 12, 34, 0.85);
+      background: rgba(16, 30, 82, 0.95);
     }
 
     .hero-cta {
@@ -172,6 +183,7 @@
       font-size: clamp(0.75rem, 1.2vw, 0.9rem);
       border: 1px solid transparent;
       cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
 
     .btn-primary {
@@ -183,7 +195,13 @@
 
     .btn-outline {
       border: 1px solid var(--border-subtle);
-      background: rgba(10, 12, 30, 0.95);
+      background: rgba(10, 20, 60, 0.95);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+      text-decoration: none;
     }
 
     .hero-note {
@@ -192,16 +210,20 @@
     }
 
     .hero-side .info-card {
-      background: rgba(9, 11, 30, 0.96);
+      background: var(--card);
       border-radius: var(--radius-md);
       border: 1px solid var(--border-subtle);
       padding: 12px 14px;
       margin-bottom: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
     }
 
     .info-label {
       font-size: clamp(0.7rem, 1.2vw, 0.78rem);
       color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 2px;
     }
 
     .info-main {
@@ -238,10 +260,11 @@
     }
 
     .card {
-      background: rgba(9, 11, 28, 0.96);
+      background: var(--card);
       border-radius: var(--radius-md);
       padding: 12px 14px;
       border: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
     .card-header {
@@ -293,8 +316,8 @@
       font-size: clamp(0.7rem, 1.2vw, 0.82rem);
       padding: 3px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(18, 20, 46, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(18, 32, 90, 0.95);
     }
 
     .two-column-list {
@@ -318,7 +341,7 @@
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--border-subtle);
-      background: rgba(10, 12, 30, 0.95);
+      background: rgba(10, 20, 60, 0.95);
     }
 
     .contact-links a:hover {
@@ -336,11 +359,36 @@
     }
 
     /* ===========================================================
+         SIMPLE ANIMATION CLASSES
+         - Used to fade/slide sections in on scroll.
+       ============================================================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===========================================================
          MOBILE
        ============================================================== */
     @media (max-width: 600px) {
       body {
         font-size: 0.85rem;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      nav ul {
+        justify-content: flex-start;
       }
 
       .hero {
@@ -350,6 +398,16 @@
       main {
         grid-template-columns: 1fr;
       }
+
+      /* Buttons full-width on mobile for better tapping */
+      .hero-cta {
+        flex-direction: column;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -358,19 +416,21 @@
   <div class="page">
 
     <!-- ===========================================================
-         HEADER (EDIT NAME / TAGLINE / NAV)
+         HEADER (Name, tagline, navigation)
        ============================================================== -->
-    <header>
+    <header class="fade-in">
       <div class="brand">
         <div class="name">John Mark R. Gulmayo</div>
         <div class="tagline">Aspiring IT Support Specialist · Homelab Enthusiast · Calgary, AB</div>
       </div>
 
       <nav>
+        <!-- Add/remove links here; href must match section id="#..." -->
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#blog">Blog</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#roadmap">Roadmap</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -379,12 +439,11 @@
     </header>
 
     <!-- ===========================================================
-         HERO SECTION
+         HERO SECTION (Intro, tags, resume button)
        ============================================================== -->
     <section class="hero">
-
-      <!-- MAIN HERO -->
-      <div class="hero-main">
+      <!-- MAIN HERO CONTENT (LEFT) -->
+      <div class="hero-main fade-in">
         <div class="hero-kicker">IT Support · Homelab · Networking</div>
         <h1 class="hero-title">Building real-world IT skills from the ground up.</h1>
 
@@ -402,6 +461,8 @@
         </div>
 
         <div class="hero-cta">
+          <!-- TODO: Upload your resume PDF to GitHub (e.g., resume.pdf in repo root)
+               then change href below to "resume.pdf" or the exact file name. -->
           <a href="#" class="btn btn-primary">Download Resume</a>
           <a href="#projects" class="btn btn-outline">View Projects</a>
         </div>
@@ -411,12 +472,12 @@
         </p>
       </div>
 
-      <!-- SIDE INFO -->
-      <div class="hero-side">
+      <!-- HERO SIDEBAR (RIGHT) -->
+      <div class="hero-side fade-in">
         <div class="info-card">
           <div class="info-label">Current Focus</div>
-          <div class="info-main">L1 IT Support · MSP environments</div>
-          <div class="info-meta">Learning ticketing workflows + remote tools</div>
+          <div class="info-main">Polishing my portfolio & IT fundamentals</div>
+          <div class="info-meta">Preparing for IT Support opportunities</div>
         </div>
 
         <div class="info-card">
@@ -424,21 +485,33 @@
           <div class="info-main">Ubuntu Homelab · Enterprise Wi-Fi Lab</div>
           <div class="info-meta">Hands-on networking & system admin</div>
         </div>
+
+        <div class="info-card">
+          <div class="info-label">Later Projects</div>
+          <div class="info-main">Compact Mini Server Rack</div>
+          <div class="info-meta">Rack-mounted homelab & advanced network design</div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-label">Future Plans</div>
+          <div class="info-main">Industry IT Certifications</div>
+          <div class="info-meta">Google IT Support certificate</div>
+          <div class="info-meta">CompTIA A+ and Network+</div>
+          <div class="info-meta">CCNA and beyond</div>
+        </div>
       </div>
     </section>
 
     <!-- ===========================================================
-         MAIN CONTENT
+         MAIN CONTENT (Left & Right columns)
        ============================================================== -->
     <main>
 
-      <!-- ===========================================================
-           LEFT COLUMN — ABOUT / SKILLS / PROJECTS
-         ============================================================== -->
+      <!-- LEFT COLUMN: About, Skills, Projects, Blog -->
       <div>
 
         <!-- ABOUT -->
-        <section id="about">
+        <section id="about" class="fade-in">
           <h2 class="section-title">About Me</h2>
           <p class="section-subtitle">A customer service professional transitioning into IT.</p>
 
@@ -457,11 +530,10 @@
         </section>
 
         <!-- SKILLS -->
-        <section id="skills">
+        <section id="skills" class="fade-in">
           <h2 class="section-title">Technical & Professional Skills</h2>
           <p class="section-subtitle">A blend of hands-on IT and customer-focused experience.</p>
 
-          <!-- Technical -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Technical Skills</div>
@@ -501,7 +573,6 @@
             </div>
           </div>
 
-          <!-- Soft Skills -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Professional Skills</div>
@@ -509,18 +580,17 @@
             <ul class="bullet-list card-body">
               <li>First point of contact experience similar to IT support.</li>
               <li>Calm under pressure with strong communication.</li>
-              <li>Team coordination in fast environments.</li>
+              <li>Team coordination in fast-paced environments.</li>
               <li>Clear explanations for non-technical people.</li>
             </ul>
           </div>
         </section>
 
         <!-- PROJECTS -->
-        <section id="projects">
+        <section id="projects" class="fade-in">
           <h2 class="section-title">Technical Projects</h2>
           <p class="section-subtitle">Hands-on projects demonstrating real IT experience.</p>
 
-          <!-- Homelab -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Ubuntu Homelab Server</div>
@@ -531,7 +601,7 @@
                 <li>Self-hosted DNS filtering with Pi-hole.</li>
                 <li>Private cloud storage using Nextcloud.</li>
                 <li>24/7 game server management via AMP.</li>
-                <li>Remote server admin via SSH.</li>
+                <li>Remote server administration via SSH.</li>
               </ul>
 
               <div class="pill-list">
@@ -543,7 +613,6 @@
             </div>
           </div>
 
-          <!-- Enterprise Wi-Fi -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Enterprise Wi-Fi Lab</div>
@@ -564,7 +633,6 @@
             </div>
           </div>
 
-          <!-- Custom PC Build -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Custom Gaming PC Build</div>
@@ -575,7 +643,7 @@
                 <li>Selected components and verified compatibility.</li>
                 <li>Assembled full system with cable management.</li>
                 <li>Installed OS, drivers, and monitoring tools.</li>
-                <li>Troubleshot RGB/BIOS/driver issues.</li>
+                <li>Troubleshot RGB, BIOS, and driver issues.</li>
               </ul>
 
               <div class="pill-list">
@@ -585,17 +653,62 @@
               </div>
             </div>
           </div>
+        </section>
 
+        <!-- BLOG SECTION -->
+        <section id="blog" class="fade-in">
+          <h2 class="section-title">Technical Blog</h2>
+          <p class="section-subtitle">
+            Writing about what I build and learn helps me understand it better and explain it to others.
+          </p>
+
+          <!-- Blog post 1 -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">How I Built My First Homelab Server</div>
+              <div class="card-meta">Homelab · In Progress</div>
+            </div>
+            <div class="card-body">
+              I started with a refurbished desktop running Ubuntu Server, then added services like Pi-hole, Nextcloud,
+              and a game server. This post will break down the hardware I used, how I installed the OS, and the first
+              problems I had to troubleshoot.
+            </div>
+          </div>
+
+          <!-- Blog post 2 -->
+          <div class="card" style="margin-top: 10px;">
+            <div class="card-header">
+              <div class="card-title">What I Learned Deploying My Portfolio Site</div>
+              <div class="card-meta">Web · Deployed on GitHub Pages</div>
+            </div>
+            <div class="card-body">
+              From editing HTML/CSS in VS Code to deploying with GitHub Pages, I learned how static sites are hosted,
+              how to structure a portfolio, and how important it is to present technical projects clearly for employers.
+            </div>
+          </div>
+
+          <!-- Blog post 3 -->
+          <div class="card" style="margin-top: 10px;">
+            <div class="card-header">
+              <div class="card-title">Planning a Compact Mini Server Rack</div>
+              <div class="card-meta">Network Design · Future Plan</div>
+            </div>
+            <div class="card-body">
+              I’ve started designing a small server rack that will house a UPS, firewall, managed switch, and my homelab
+              server. This post will cover my rack diagram, power planning, and how I want to segment my network for
+              lab, guest, and IoT devices.
+            </div>
+          </div>
+
+          <!-- NOTE: In the future, you can turn each blog card into a link to a full page. -->
         </section>
       </div>
 
-      <!-- ===========================================================
-           RIGHT COLUMN — EXPERIENCE / ROADMAP / CONTACT
-         ============================================================== -->
+      <!-- RIGHT COLUMN: Experience, Roadmap, Contact -->
       <div>
 
         <!-- EXPERIENCE -->
-        <section id="experience">
+        <section id="experience" class="fade-in">
           <h2 class="section-title">Experience</h2>
           <p class="section-subtitle">Hospitality roles with strong IT support overlap.</p>
 
@@ -605,26 +718,26 @@
               <div class="card-meta">Residence Inn Calgary Downtown · 2023–Present</div>
             </div>
             <ul class="bullet-list card-body">
-              <li>Acted as the first point of contact for guests, providing warm welcomes and promptly resolving inquiries and concerns.</li>
-              <li>Coordinated seamlessly with the front desk and other departments to ensure a seemless and positive guest experience.</li>
-              <li>Maintained a clean and organized environment, ensuring a welcoming and welcoming atmosphere.</li>
+              <li>Acted as the first point of contact for guests, providing warm welcomes and resolving inquiries and concerns promptly.</li>
+              <li>Coordinated with the front desk and other departments to ensure a seamless and positive guest experience.</li>
+              <li>Maintained a clean and organized environment, ensuring a professional and welcoming atmosphere.</li>
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card" style="margin-top: 10px;">
             <div class="card-header">
-              <div class="card-title">Houseperson / Guest Environmental Expert</div>
-              <div class="card-meta">Calgary Downtown Hotels 2021–2024</div>
+              <div class="card-title">Houseperson / Guest Environment Support</div>
+              <div class="card-meta">Calgary Downtown Hotels · 2021–2024</div>
             </div>
 
             <ul class="bullet-list card-body">
-              <li>Held progressive responsibilities in Houseperson and environmental export roles, requiring strong communication skills. meticulous attention to detail, time management, and a commitment to excellence.</li>
-              <li>Utilized mobile apps (Zello and HotSOS) for real-time communication and task coordination, showing adaptability with digital tools and workflows.</li>
-              <li>Managed inventory levels and implemented efficient procedures for lines and other supplies.</li>
+              <li>Held progressive responsibilities in housekeeping and operations support roles, requiring strong communication, attention to detail, and time management.</li>
+              <li>Used mobile apps (Zello and HotSOS) for real-time communication and task coordination, showing comfort with digital tools and workflows.</li>
+              <li>Managed inventory levels and followed procedures for linens and other supplies to keep operations running smoothly.</li>
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card" style="margin-top: 10px;">
             <div class="card-header">
               <div class="card-title">Education & Certifications</div>
             </div>
@@ -636,8 +749,8 @@
           </div>
         </section>
 
-        <!-- LEARNING ROADMAP -->
-        <section id="roadmap">
+        <!-- ROADMAP -->
+        <section id="roadmap" class="fade-in">
           <h2 class="section-title">Learning Roadmap</h2>
           <p class="section-subtitle">Where I’m heading next.</p>
 
@@ -652,31 +765,31 @@
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card" style="margin-top: 10px;">
             <div class="card-header">
               <div class="card-title">Mid-Term (6–18 Months)</div>
             </div>
             <ul class="bullet-list card-body">
               <li>Grow into junior SysAdmin roles.</li>
-              <li>Deepen networking knowledge (Net+).</li>
-              <li>Gain ticketing system experience.</li>
+              <li>Deepen networking knowledge (Network+ level).</li>
+              <li>Gain experience with ticketing systems and remote tools.</li>
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card" style="margin-top: 10px;">
             <div class="card-header">
               <div class="card-title">Long-Term (2+ Years)</div>
             </div>
             <ul class="bullet-list card-body">
-              <li>Become System or Network Administrator.</li>
-              <li>Earn more certifications (Azure, Security+).</li>
-              <li>Run advanced homelab environments.</li>
+              <li>Become a System or Network Administrator.</li>
+              <li>Earn more certifications (Azure, Security+, CCNA).</li>
+              <li>Run advanced homelab environments that mirror production.</li>
             </ul>
           </div>
         </section>
 
         <!-- CONTACT -->
-        <section id="contact">
+        <section id="contact" class="fade-in">
           <h2 class="section-title">Contact</h2>
           <p class="section-subtitle">Open to IT Support opportunities in Calgary.</p>
 
@@ -687,6 +800,7 @@
             </p>
 
             <div class="contact-links">
+              <!-- EDIT THESE LINKS WHEN YOUR EMAIL OR LINKEDIN CHANGE -->
               <a href="mailto:janmattew102@yahoo.com">Email</a>
               <a href="https://www.linkedin.com/in/johnmark-gulmayo-85181a383" target="_blank">LinkedIn</a>
             </div>
@@ -697,10 +811,33 @@
     </main>
 
     <!-- FOOTER -->
-    <footer>
+    <footer class="fade-in">
       Built by John Mark R. Gulmayo · Personal homelab projects only — no production client data.
     </footer>
-
   </div>
+
+  <!-- ===========================================================
+       SMALL SCRIPT FOR SCROLL ANIMATIONS
+       - Adds .visible to .fade-in elements when they enter view.
+       =========================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const fadeEls = document.querySelectorAll('.fade-in');
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      fadeEls.forEach((el) => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
