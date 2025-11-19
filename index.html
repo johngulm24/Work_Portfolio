@@ -393,8 +393,9 @@
 
     .modal-body {
       height: 70vh;
-      overflow: hidden;
+      overflow: auto; /*allow scrolling*/
       border-radius: 10px;
+      -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS*/
     }
 
     .modal-body iframe {
@@ -879,4 +880,5 @@
   </script>
 </body>
 </html>
+
 
