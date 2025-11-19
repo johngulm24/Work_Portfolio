@@ -9,9 +9,6 @@
   <!-- ===========================================================
        GLOBAL STYLES
        - Colors, typography, layout.
-       - Main things you'll edit later:
-         * Color variables in :root
-         * Section content in HTML
        ============================================================== -->
   <style>
     /* ===========================================================
@@ -41,7 +38,6 @@
 
     /* ===========================================================
        BODY
-       - Global font, page background, base font size.
        =========================================================== */
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -196,6 +192,7 @@
     .btn-outline {
       border: 1px solid var(--border-subtle);
       background: rgba(10, 20, 60, 0.95);
+      color: var(--text);
     }
 
     .btn:hover {
@@ -359,8 +356,7 @@
     }
 
     /* ===========================================================
-         SIMPLE ANIMATION CLASSES
-         - Used to fade/slide sections in on scroll.
+         SIMPLE ANIMATION CLASSES (Fade-in on scroll)
        ============================================================== */
     .fade-in {
       opacity: 0;
@@ -371,6 +367,85 @@
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* ===========================================================
+         RESUME MODAL (PDF VIEWER POPUP)
+       ============================================================== */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;              /* Hidden by default */
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal.is-open {
+      display: flex;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+    }
+
+    .modal-dialog {
+      position: relative;
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      max-width: 900px;
+      width: 90%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      padding: 12px 12px 14px;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.6);
+      z-index: 1001;
+    }
+
+    .modal-title {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      margin-bottom: 8px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 2px 6px;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--text);
+    }
+
+    .modal-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .modal-body iframe {
+      flex: 1;
+      border: none;
+      border-radius: 10px;
+      background: #000;
+    }
+
+    .modal-note {
+      font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+      color: var(--muted);
     }
 
     /* ===========================================================
@@ -399,7 +474,6 @@
         grid-template-columns: 1fr;
       }
 
-      /* Buttons full-width on mobile for better tapping */
       .hero-cta {
         flex-direction: column;
       }
@@ -407,6 +481,11 @@
       .hero-cta .btn {
         width: 100%;
         text-align: center;
+      }
+
+      .modal-dialog {
+        width: 96%;
+        padding: 10px;
       }
     }
   </style>
@@ -416,7 +495,7 @@
   <div class="page">
 
     <!-- ===========================================================
-         HEADER (Name, tagline, navigation)
+         HEADER
        ============================================================== -->
     <header class="fade-in">
       <div class="brand">
@@ -425,7 +504,6 @@
       </div>
 
       <nav>
-        <!-- Add/remove links here; href must match section id="#..." -->
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -439,10 +517,10 @@
     </header>
 
     <!-- ===========================================================
-         HERO SECTION (Intro, tags, resume button)
+         HERO SECTION
        ============================================================== -->
     <section class="hero">
-      <!-- MAIN HERO CONTENT (LEFT) -->
+      <!-- MAIN HERO (LEFT) -->
       <div class="hero-main fade-in">
         <div class="hero-kicker">IT Support · Homelab · Networking</div>
         <h1 class="hero-title">Building real-world IT skills from the ground up.</h1>
@@ -461,9 +539,10 @@
         </div>
 
         <div class="hero-cta">
-          <!-- TODO: Upload your resume PDF to GitHub (e.g., resume.pdf in repo root)
-               then change href below to "resume.pdf" or the exact file name. -->
-          <a href="Updated_Resume_portfolio.pdf" class="btn btn-primary">Download Resume</a>
+          <!-- This now opens the resume popup modal -->
+          <button type="button" class="btn btn-primary" id="openResumeModal">
+            View Resume
+          </button>
           <a href="#projects" class="btn btn-outline">View Projects</a>
         </div>
 
@@ -503,11 +582,11 @@
     </section>
 
     <!-- ===========================================================
-         MAIN CONTENT (Left & Right columns)
+         MAIN CONTENT
        ============================================================== -->
     <main>
 
-      <!-- LEFT COLUMN: About, Skills, Projects, Blog -->
+      <!-- LEFT COLUMN -->
       <div>
 
         <!-- ABOUT -->
@@ -655,14 +734,13 @@
           </div>
         </section>
 
-        <!-- BLOG SECTION -->
+        <!-- BLOG -->
         <section id="blog" class="fade-in">
           <h2 class="section-title">Technical Blog</h2>
           <p class="section-subtitle">
             Writing about what I build and learn helps me understand it better and explain it to others.
           </p>
 
-          <!-- Blog post 1 -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">How I Built My First Homelab Server</div>
@@ -675,7 +753,6 @@
             </div>
           </div>
 
-          <!-- Blog post 2 -->
           <div class="card" style="margin-top: 10px;">
             <div class="card-header">
               <div class="card-title">What I Learned Deploying My Portfolio Site</div>
@@ -687,7 +764,6 @@
             </div>
           </div>
 
-          <!-- Blog post 3 -->
           <div class="card" style="margin-top: 10px;">
             <div class="card-header">
               <div class="card-title">Planning a Compact Mini Server Rack</div>
@@ -699,12 +775,10 @@
               lab, guest, and IoT devices.
             </div>
           </div>
-
-          <!-- NOTE: In the future, you can turn each blog card into a link to a full page. -->
         </section>
       </div>
 
-      <!-- RIGHT COLUMN: Experience, Roadmap, Contact -->
+      <!-- RIGHT COLUMN -->
       <div>
 
         <!-- EXPERIENCE -->
@@ -800,7 +874,6 @@
             </p>
 
             <div class="contact-links">
-              <!-- EDIT THESE LINKS WHEN YOUR EMAIL OR LINKEDIN CHANGE -->
               <a href="mailto:janmattew102@yahoo.com">Email</a>
               <a href="https://www.linkedin.com/in/johnmark-gulmayo-85181a383" target="_blank">LinkedIn</a>
             </div>
@@ -817,11 +890,32 @@
   </div>
 
   <!-- ===========================================================
-       SMALL SCRIPT FOR SCROLL ANIMATIONS
-       - Adds .visible to .fade-in elements when they enter view.
+       RESUME MODAL MARKUP
+       - This is the popup that shows your resume.pdf
+       - Make sure resume.pdf is uploaded to your GitHub repo root.
+       =========================================================== -->
+  <div id="resumeModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
+      <button class="modal-close" type="button" aria-label="Close resume viewer">&times;</button>
+      <h2 class="modal-title" id="resumeModalTitle">Resume – John Mark R. Gulmayo</h2>
+      <div class="modal-body">
+        <!-- This iframe loads your resume.pdf from the same repo -->
+        <iframe src="resume.pdf" title="Resume PDF Viewer"></iframe>
+        <p class="modal-note">
+          If the PDF doesn’t load, you can
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer">open it in a new tab</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===========================================================
+       SCRIPT: Scroll animations + Resume modal behavior
        =========================================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      /* ========= Fade-in on scroll ========= */
       const fadeEls = document.querySelectorAll('.fade-in');
 
       const observer = new IntersectionObserver(
@@ -837,8 +931,38 @@
       );
 
       fadeEls.forEach((el) => observer.observe(el));
+
+      /* ========= Resume modal ========= */
+      const modal = document.getElementById('resumeModal');
+      const openBtn = document.getElementById('openResumeModal');
+      const closeBtn = modal.querySelector('.modal-close');
+      const backdrop = modal.querySelector('.modal-backdrop');
+
+      function openModal() {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      if (openBtn) {
+        openBtn.addEventListener('click', openModal);
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </body>
 </html>
-
