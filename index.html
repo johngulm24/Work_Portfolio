@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio of John Mark Gulmayo - aspiring IT Support Specialist and homelab system administrator based in Calgary, AB." />
 
-  <!-- ===========================================================
-       GLOBAL STYLES — Typography responsive using clamp()
-  ============================================================== -->
   <style>
     :root {
       --bg: #060714;
@@ -55,9 +52,7 @@
       padding: 24px 16px 60px;
     }
 
-    /* ===========================================================
-         HEADER + NAV
-       ============================================================== */
+    /* HEADER + NAV */
     header {
       display: flex;
       flex-wrap: wrap;
@@ -104,9 +99,7 @@
       text-decoration: none;
     }
 
-    /* ===========================================================
-         HERO SECTION
-       ============================================================== */
+    /* HERO SECTION */
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.7fr);
@@ -219,9 +212,7 @@
       color: var(--muted);
     }
 
-    /* ===========================================================
-         MAIN CONTENT COLUMNS
-       ============================================================== */
+    /* MAIN CONTENT COLUMNS */
     main {
       display: grid;
       grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.7fr);
@@ -248,6 +239,7 @@
       border-radius: var(--radius-md);
       padding: 12px 14px;
       border: 1px solid var(--border-subtle);
+      margin-bottom: 12px;
     }
 
     .card-header {
@@ -309,9 +301,7 @@
       gap: 6px 18px;
     }
 
-    /* ===========================================================
-         CONTACT BUTTONS
-       ============================================================== */
+    /* CONTACT BUTTONS */
     .contact-links {
       display: flex;
       flex-wrap: wrap;
@@ -331,9 +321,7 @@
       border-color: var(--accent);
     }
 
-    /* ===========================================================
-         FOOTER
-       ============================================================== */
+    /* FOOTER */
     footer {
       margin-top: 26px;
       text-align: center;
@@ -341,9 +329,7 @@
       color: var(--muted);
     }
 
-    /* ===========================================================
-         FADE-IN ANIMATION
-       ============================================================== */
+    /* FADE-IN ANIMATION */
     .fade-in {
       opacity: 0;
       transform: translateY(15px);
@@ -355,9 +341,7 @@
       transform: translateY(0);
     }
 
-    /* ===========================================================
-         RESUME MODAL
-       ============================================================== */
+    /* RESUME MODAL */
     .modal {
       position: fixed;
       inset: 0;
@@ -393,9 +377,9 @@
 
     .modal-body {
       height: 70vh;
-      overflow: auto; /*allow scrolling*/
+      overflow: auto;                    /* allow scrolling inside PDF */
       border-radius: 10px;
-      -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS*/
+      -webkit-overflow-scrolling: touch; /* smoother mobile scroll */
     }
 
     .modal-body iframe {
@@ -422,10 +406,8 @@
       color: #d7dfff;
     }
 
-    /* ===========================================================
-         MOBILE
-       ============================================================== */
-    @media (max-width: 700px) {
+    /* MOBILE */
+    @media (max-width: 600px) {
       body {
         font-size: 0.85rem;
       }
@@ -446,9 +428,9 @@
         width: 100%;
         text-align: center;
       }
-      /*Taller modal on mobile*/
+
       .modal-body {
-        height: 90vh;
+        height: 80vh; /* taller on mobile */
       }
     }
   </style>
@@ -457,9 +439,7 @@
 <body>
   <div class="page">
 
-    <!-- ===========================================================
-         HEADER (EDIT NAME / TAGLINE / NAV)
-       ============================================================== -->
+    <!-- HEADER -->
     <header class="fade-in">
       <div class="brand">
         <div class="name">John Mark R. Gulmayo</div>
@@ -478,9 +458,7 @@
       </nav>
     </header>
 
-    <!-- ===========================================================
-         HERO SECTION
-       ============================================================== -->
+    <!-- HERO -->
     <section class="hero fade-in">
       <!-- MAIN HERO -->
       <div class="hero-main">
@@ -498,16 +476,10 @@
           <span class="hero-tag">Microsoft 365</span>
           <span class="hero-tag">Networking</span>
           <span class="hero-tag">Customer Support</span>
-          <span class="hero-tag">Web Development</span>
-          <span class="hero-tag">Windows Adminstration</span>
-          <span class="hero-tag">Troubleshooting</span>
-          <span class="hero-tag">Problem Solving</span>
-          <span class="hero-tag">Hardware Diagnostics</span>
-          <span class="hero-tag">Active Directory Basics</span>
         </div>
 
         <div class="hero-cta">
-          <button class="btn btn-primary" id="openResumeBtn">View Resume</button>
+          <button class="btn btn-primary" id="openResumeBtn">Download Resume</button>
           <a href="#projects" class="btn btn-outline">View Projects</a>
         </div>
 
@@ -544,16 +516,11 @@
       </div>
     </section>
 
-    <!-- ===========================================================
-         MAIN CONTENT
-       ============================================================== -->
+    <!-- MAIN CONTENT -->
     <main>
 
-      <!-- ===========================================================
-           LEFT COLUMN — ABOUT / SKILLS / PROJECTS
-         ============================================================== -->
+      <!-- LEFT COLUMN -->
       <div>
-
         <!-- ABOUT -->
         <section id="about" class="fade-in">
           <h2 class="section-title">About Me</h2>
@@ -701,14 +668,10 @@
             </div>
           </div>
         </section>
-
       </div>
 
-      <!-- ===========================================================
-           RIGHT COLUMN — EXPERIENCE / ROADMAP / CONTACT
-         ============================================================== -->
+      <!-- RIGHT COLUMN -->
       <div>
-
         <!-- EXPERIENCE -->
         <section id="experience" class="fade-in">
           <h2 class="section-title">Experience</h2>
@@ -751,7 +714,7 @@
           </div>
         </section>
 
-        <!-- LEARNING ROADMAP -->
+        <!-- ROADMAP -->
         <section id="roadmap" class="fade-in">
           <h2 class="section-title">Learning Roadmap</h2>
           <p class="section-subtitle">Where I’m heading next.</p>
@@ -763,7 +726,7 @@
             <ul class="bullet-list card-body">
               <li>Land first IT Support / Helpdesk role.</li>
               <li>Continue homelab expansion.</li>
-              <li>Study for CompTIA+.</li>
+              <li>Study for CompTIA A+.</li>
             </ul>
           </div>
 
@@ -818,18 +781,14 @@
 
   </div>
 
-  <!-- ===========================================================
-       RESUME MODAL (PDF VIEWER)
-     ============================================================== -->
+  <!-- RESUME MODAL -->
   <div id="resumeModal" class="modal" aria-hidden="true">
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
       <button class="modal-close" type="button" aria-label="Close resume viewer">&times;</button>
 
-        <h2 class="modal-title" id="resumeModalTitle">Resume</h2>
-       
-      
+      <h2 class="modal-title" id="resumeModalTitle">Resume – John Mark R. Gulmayo</h2>
+
       <div class="modal-body">
-        <!-- Your PDF file must be in the same folder as index.html -->
         <iframe src="Updated_Resume_portfolio.pdf" title="Resume PDF Viewer"></iframe>
       </div>
 
@@ -840,28 +799,32 @@
     </div>
   </div>
 
-  <!-- ===========================================================
-       SCRIPT – Fade-in + Resume Modal
-     ============================================================== -->
+  <!-- SCRIPT: fade-in + modal + mobile behavior -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      /* Fade-in on scroll */
+      /* ---- Fade-in on scroll (down & up) ---- */
       const fadeEls = document.querySelectorAll(".fade-in");
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
+          } else {
+            entry.target.classList.remove("visible");
           }
         });
       }, { threshold: 0.15 });
 
       fadeEls.forEach(el => observer.observe(el));
 
-      /* Resume modal behaviour */
+      /* ---- Resume modal behavior ---- */
       const modal = document.getElementById("resumeModal");
       const openBtn = document.getElementById("openResumeBtn");
       const closeBtn = modal.querySelector(".modal-close");
+
+      function isMobile() {
+        return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      }
 
       function openModal() {
         modal.classList.add("is-open");
@@ -875,13 +838,30 @@
         document.body.style.overflow = "";
       }
 
-      if (openBtn) openBtn.addEventListener("click", openModal);
+      function openResume() {
+        if (isMobile()) {
+          // On mobile, open PDF directly in new tab
+          window.open("Updated_Resume_portfolio.pdf", "_blank");
+        } else {
+          // On desktop, use the nice modal viewer
+          openModal();
+        }
+      }
+
+      if (openBtn) {
+        openBtn.addEventListener("click", openResume);
+      }
+
       closeBtn.addEventListener("click", closeModal);
 
+      // Close on backdrop click
       modal.addEventListener("click", (event) => {
-        if (event.target === modal) closeModal();
+        if (event.target === modal) {
+          closeModal();
+        }
       });
 
+      // Close on Escape key
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && modal.classList.contains("is-open")) {
           closeModal();
@@ -891,8 +871,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
