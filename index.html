@@ -5,7 +5,8 @@
   <title>John Mark R. Gulmayo | IT Support & Homelab Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio of John Mark Gulmayo - aspiring IT Support Specialist and homelab system administrator based in Calgary, AB." />
-
+  
+<!-- Start -->
   <style>
     :root {
       --bg: #060714;
@@ -21,13 +22,11 @@
       --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
       --max-width: 1080px;
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #151832 0, #050612 50%, #020308 100%);
@@ -36,22 +35,18 @@
       -webkit-font-smoothing: antialiased;
       font-size: clamp(0.9rem, 1.1vw, 1rem);
     }
-
     a {
       color: var(--accent);
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }
-
     .page {
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 24px 16px 60px;
     }
-
     /* HEADER + NAV */
     header {
       display: flex;
@@ -61,30 +56,25 @@
       gap: 16px;
       margin-bottom: 32px;
     }
-
     .brand {
       display: flex;
       flex-direction: column;
       gap: 4px;
     }
-
     .name {
       font-size: clamp(1.3rem, 3vw, 1.7rem);
       font-weight: 700;
     }
-
     .tagline {
       font-size: clamp(0.75rem, 1.4vw, 0.95rem);
       color: var(--muted);
     }
-
     nav ul {
       list-style: none;
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
     }
-
     nav a {
       font-size: clamp(0.75rem, 1.2vw, 0.9rem);
       padding: 6px 10px;
@@ -92,13 +82,11 @@
       border: 1px solid transparent;
       background: rgba(15, 19, 48, 0.7);
     }
-
     nav a:hover {
       border-color: var(--accent);
       background: rgba(79, 140, 255, 0.15);
       text-decoration: none;
     }
-
     /* HERO SECTION */
     .hero {
       display: grid;
@@ -106,7 +94,6 @@
       gap: 24px;
       margin-bottom: 32px;
     }
-
     .hero-main {
       background: linear-gradient(135deg, rgba(79, 140, 255, 0.16), rgba(6, 10, 32, 0.96));
       border-radius: var(--radius-lg);
@@ -114,7 +101,6 @@
       border: 1px solid rgba(104, 130, 255, 0.35);
       box-shadow: var(--shadow-soft);
     }
-
     .hero-kicker {
       font-size: clamp(0.7rem, 1.2vw, 0.8rem);
       text-transform: uppercase;
@@ -122,27 +108,23 @@
       color: var(--muted);
       margin-bottom: 6px;
     }
-
     .hero-title {
       font-size: clamp(1.3rem, 4vw, 2rem);
       font-weight: 700;
       margin-bottom: 8px;
     }
-
     .hero-subtitle {
       font-size: clamp(0.82rem, 1.6vw, 1rem);
       color: var(--muted);
       max-width: 90%;
       margin-bottom: 16px;
     }
-
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 14px;
     }
-
     .hero-tag {
       font-size: clamp(0.7rem, 1.2vw, 0.85rem);
       padding: 4px 10px;
@@ -150,14 +132,12 @@
       border: 1px solid rgba(255, 255, 255, 0.12);
       background: rgba(11, 12, 34, 0.85);
     }
-
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 4px; /* smaller gap above hero-note */
     }
-
     .btn {
       padding: 8px 14px;
       border-radius: 999px;
@@ -166,30 +146,25 @@
       cursor: pointer;
       transition: transform 0.18s ease;
     }
-
     .btn-primary {
       background: linear-gradient(135deg, #4f8cff, #9c6bff);
       color: white;
       border: none;
       box-shadow: 0 8px 25px rgba(79, 140, 255, 0.45);
     }
-
     .btn-outline {
       border: 1px solid var(--border-subtle);
       background: rgba(10, 12, 30, 0.95);
       color: var(--text);
     }
-
     .btn:hover {
       transform: translateY(-2px);
     }
-
     .hero-note {
       font-size: clamp(0.7rem, 1.2vw, 0.85rem);
       color: var(--muted);
       margin-top: 2px;
     }
-
     .hero-side .info-card {
       background: rgba(9, 11, 30, 0.96);
       border-radius: var(--radius-md);
@@ -197,43 +172,35 @@
       padding: 12px 14px;
       margin-bottom: 12px;
     }
-
     .info-label {
       font-size: clamp(0.7rem, 1.2vw, 0.78rem);
       color: var(--muted);
     }
-
     .info-main {
       font-size: clamp(0.85rem, 1.6vw, 1rem);
     }
-
     .info-meta {
       font-size: clamp(0.7rem, 1.2vw, 0.82rem);
       color: var(--muted);
     }
-
     /* MAIN CONTENT COLUMNS */
     main {
       display: grid;
       grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.7fr);
       gap: 24px;
     }
-
     section {
       margin-bottom: 22px;
     }
-
     .section-title {
       font-size: clamp(1rem, 2.4vw, 1.2rem);
       margin-bottom: 8px;
     }
-
     .section-subtitle {
       font-size: clamp(0.75rem, 1.4vw, 0.9rem);
       color: var(--muted);
       margin-bottom: 8px;
     }
-
     .card {
       background: rgba(9, 11, 28, 0.96);
       border-radius: var(--radius-md);
@@ -241,29 +208,24 @@
       border: 1px solid var(--border-subtle);
       margin-bottom: 12px;
     }
-
     .card-header {
       display: flex;
       justify-content: space-between;
       gap: 8px;
       margin-bottom: 4px;
     }
-
     .card-title {
       font-size: clamp(0.9rem, 1.8vw, 1rem);
       font-weight: 600;
     }
-
     .card-meta {
       font-size: clamp(0.7rem, 1.2vw, 0.8rem);
       color: var(--muted);
     }
-
     .card-body {
       font-size: clamp(0.78rem, 1.6vw, 0.9rem);
       color: var(--muted);
     }
-
     .bullet-list li {
       margin-bottom: 4px;
       font-size: clamp(0.75rem, 1.5vw, 0.9rem);
@@ -271,7 +233,6 @@
       padding-left: 14px;
       position: relative;
     }
-
     .bullet-list li::before {
       content: "";
       position: absolute;
@@ -279,14 +240,12 @@
       top: 0;
       color: var(--accent);
     }
-
     .pill-list {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       margin-top: 6px;
     }
-
     .pill {
       font-size: clamp(0.7rem, 1.2vw, 0.82rem);
       padding: 3px 8px;
@@ -294,13 +253,11 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(18, 20, 46, 0.9);
     }
-
     .two-column-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 6px 18px;
     }
-
     /* CONTACT BUTTONS */
     .contact-links {
       display: flex;
@@ -308,7 +265,6 @@
       gap: 8px;
       margin-top: 8px;
     }
-
     .contact-links a {
       font-size: clamp(0.75rem, 1.2vw, 0.85rem);
       padding: 6px 10px;
@@ -316,11 +272,9 @@
       border: 1px solid var(--border-subtle);
       background: rgba(10, 12, 30, 0.95);
     }
-
     .contact-links a:hover {
       border-color: var(--accent);
     }
-
     /* FOOTER */
     footer {
       margin-top: 26px;
@@ -328,19 +282,16 @@
       font-size: clamp(0.75rem, 1.2vw, 0.85rem);
       color: var(--muted);
     }
-
     /* FADE-IN ANIMATION */
     .fade-in {
       opacity: 0;
       transform: translateY(15px);
       transition: 0.5s ease;
     }
-
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     /* RESUME MODAL */
     .modal {
       position: fixed;
@@ -352,11 +303,9 @@
       padding: 20px;
       z-index: 9999;
     }
-
     .modal.is-open {
       display: flex;
     }
-
     .modal-dialog {
       background: #23345c;
       width: min(900px, 95%);
@@ -368,27 +317,23 @@
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-
     .modal-title {
       margin-bottom: 12px;
       font-size: 1.2rem;
       font-weight: 700;
     }
-
     .modal-body {
       height: 70vh;
       overflow: auto;                    /* allow scrolling inside PDF */
       border-radius: 10px;
       -webkit-overflow-scrolling: touch; /* smoother mobile scroll */
     }
-
     .modal-body iframe {
       width: 100%;
       height: 100%;
       border: none;
       background: #1a2440;
     }
-
     .modal-close {
       position: absolute;
       top: 10px;
@@ -399,36 +344,29 @@
       border: none;
       cursor: pointer;
     }
-
     .modal-note {
       font-size: 0.85rem;
       margin-top: 8px;
       color: #d7dfff;
     }
-
     /* MOBILE */
     @media (max-width: 600px) {
       body {
         font-size: 0.85rem;
       }
-
       .hero {
         grid-template-columns: 1fr;
       }
-
       main {
         grid-template-columns: 1fr;
       }
-
       .hero-cta {
         flex-direction: column;
       }
-
       .hero-cta .btn {
         width: 100%;
         text-align: center;
       }
-
       .modal-body {
         height: 80vh; /* taller on mobile */
       }
@@ -445,7 +383,7 @@
         <div class="name">John Mark R. Gulmayo</div>
         <div class="tagline">Aspiring IT Support Specialist · Homelab Enthusiast · Calgary, AB</div>
       </div>
-
+      
       <nav>
         <ul>
           <li><a href="#about">About</a></li>
@@ -527,7 +465,7 @@
           <div class="info-main">Ubuntu Homelab · Enterprise Wi-Fi Lab</div>
           <div class="info-meta">Hands-on Networking & System Admin</div>
         </div>
-
+        
         <div class="info-card">
           <div class="info-label">Later Projects</div>
           <div class="info-main">Compact Mini Server Rack</div>
@@ -894,7 +832,7 @@
     function isMobile() {
       return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     }
-
+    
     function openModal() {
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
