@@ -4,22 +4,23 @@
   <meta charset="UTF-8" />
   <title>John Mark R. Gulmayo | IT Support & Homelab Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of John Mark Gulmayo - aspiring IT Support Specialist and homelab system administrator based in Calgary, AB." />
+  <meta name="description" content="Portfolio of John Mark Gulmayo - aspiring IT Support Specialist and homelab enthusiast based in Calgary, AB." />
   
-<!-- Start -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #060714;
-      --bg-alt: #0d1020;
-      --card: #14172b;
-      --accent: #4f8cff;
-      --accent-soft: rgba(79, 140, 255, 0.1);
-      --text: #f5f7ff;
-      --muted: #a4a8c5;
-      --border-subtle: #262a40;
-      --radius-lg: 14px;
-      --radius-md: 10px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --bg: #050810;
+      --bg-alt: #080c18;
+      --card: #0c1020;
+      --accent: #5b9cf6;
+      --accent-mid: #3b82f6;
+      --accent-soft: rgba(91, 156, 246, 0.08);
+      --text: #e8edf5;
+      --muted: #7a8399;
+      --border-subtle: #161c2e;
+      --radius-lg: 12px;
+      --radius-md: 8px;
+      --shadow-soft: 0 12px 35px rgba(0, 0, 0, 0.5);
       --max-width: 1080px;
     }
     * {
@@ -28,12 +29,13 @@
       padding: 0;
     }
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #151832 0, #050612 50%, #020308 100%);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: radial-gradient(ellipse at top, #0d1628 0%, #050810 60%, #020508 100%);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       font-size: clamp(0.9rem, 1.1vw, 1rem);
+      font-weight: 300;
     }
     a {
       color: var(--accent);
@@ -47,7 +49,6 @@
       margin: 0 auto;
       padding: 24px 16px 60px;
     }
-    /* HEADER + NAV */
     header {
       display: flex;
       flex-wrap: wrap;
@@ -63,7 +64,8 @@
     }
     .name {
       font-size: clamp(1.3rem, 3vw, 1.7rem);
-      font-weight: 700;
+      font-weight: 500;
+      letter-spacing: -0.02em;
     }
     .tagline {
       font-size: clamp(0.75rem, 1.4vw, 0.95rem);
@@ -80,14 +82,13 @@
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid transparent;
-      background: rgba(15, 19, 48, 0.7);
+      background: rgba(8, 12, 24, 0.85);
     }
     nav a:hover {
       border-color: var(--accent);
-      background: rgba(79, 140, 255, 0.15);
+      background: rgba(59, 130, 246, 0.12);
       text-decoration: none;
     }
-    /* HERO SECTION */
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.7fr);
@@ -95,22 +96,24 @@
       margin-bottom: 32px;
     }
     .hero-main {
-      background: linear-gradient(135deg, rgba(79, 140, 255, 0.16), rgba(6, 10, 32, 0.96));
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(5, 8, 16, 0.98));
       border-radius: var(--radius-lg);
-      padding: 20px 20px 10px; /* tightened bottom padding */
-      border: 1px solid rgba(104, 130, 255, 0.35);
+      padding: 20px 20px 16px;
+      border: 1px solid rgba(91, 156, 246, 0.15);
       box-shadow: var(--shadow-soft);
     }
     .hero-kicker {
       font-size: clamp(0.7rem, 1.2vw, 0.8rem);
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--muted);
+      color: var(--accent);
       margin-bottom: 6px;
+      font-weight: 400;
     }
     .hero-title {
       font-size: clamp(1.3rem, 4vw, 2rem);
-      font-weight: 700;
+      font-weight: 500;
+      letter-spacing: -0.02em;
       margin-bottom: 8px;
     }
     .hero-subtitle {
@@ -129,14 +132,14 @@
       font-size: clamp(0.7rem, 1.2vw, 0.85rem);
       padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(11, 12, 34, 0.85);
+      border: 1px solid rgba(91, 156, 246, 0.15);
+      background: rgba(12, 16, 32, 0.9);
     }
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 4px; /* smaller gap above hero-note */
+      margin-bottom: 10px;
     }
     .btn {
       padding: 8px 14px;
@@ -147,14 +150,15 @@
       transition: transform 0.18s ease;
     }
     .btn-primary {
-      background: linear-gradient(135deg, #4f8cff, #9c6bff);
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
       color: white;
       border: none;
-      box-shadow: 0 8px 25px rgba(79, 140, 255, 0.45);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35);
+      font-weight: 400;
     }
     .btn-outline {
       border: 1px solid var(--border-subtle);
-      background: rgba(10, 12, 30, 0.95);
+      background: rgba(12, 16, 32, 0.95);
       color: var(--text);
     }
     .btn:hover {
@@ -163,10 +167,9 @@
     .hero-note {
       font-size: clamp(0.7rem, 1.2vw, 0.85rem);
       color: var(--muted);
-      margin-top: 2px;
     }
     .hero-side .info-card {
-      background: rgba(9, 11, 30, 0.96);
+      background: rgba(8, 12, 24, 0.98);
       border-radius: var(--radius-md);
       border: 1px solid var(--border-subtle);
       padding: 12px 14px;
@@ -174,7 +177,11 @@
     }
     .info-label {
       font-size: clamp(0.7rem, 1.2vw, 0.78rem);
-      color: var(--muted);
+      color: var(--accent);
+      margin-bottom: 2px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
     .info-main {
       font-size: clamp(0.85rem, 1.6vw, 1rem);
@@ -183,7 +190,6 @@
       font-size: clamp(0.7rem, 1.2vw, 0.82rem);
       color: var(--muted);
     }
-    /* MAIN CONTENT COLUMNS */
     main {
       display: grid;
       grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.7fr);
@@ -194,6 +200,8 @@
     }
     .section-title {
       font-size: clamp(1rem, 2.4vw, 1.2rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
       margin-bottom: 8px;
     }
     .section-subtitle {
@@ -202,21 +210,22 @@
       margin-bottom: 8px;
     }
     .card {
-      background: rgba(9, 11, 28, 0.96);
+      background: rgba(8, 12, 24, 0.98);
       border-radius: var(--radius-md);
-      padding: 12px 14px;
+      padding: 14px 16px;
       border: 1px solid var(--border-subtle);
+      border-left: 2px solid rgba(91, 156, 246, 0.25);
       margin-bottom: 12px;
     }
     .card-header {
       display: flex;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
     .card-title {
       font-size: clamp(0.9rem, 1.8vw, 1rem);
-      font-weight: 600;
+      font-weight: 500;
     }
     .card-meta {
       font-size: clamp(0.7rem, 1.2vw, 0.8rem);
@@ -225,40 +234,53 @@
     .card-body {
       font-size: clamp(0.78rem, 1.6vw, 0.9rem);
       color: var(--muted);
+      line-height: 1.7;
     }
-    .bullet-list li {
-      margin-bottom: 3px;
+    /* CLEAN LIST */
+    .check-list,
+    .dash-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .check-list li,
+    .dash-list li {
       font-size: clamp(0.75rem, 1.5vw, 0.9rem);
       color: var(--muted);
-      padding-left: 2px;
+      padding-left: 0;
       position: relative;
-    }
-    .bullet-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--accent);
     }
     .pill-list {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: 6px;
+      margin-top: 10px;
     }
     .pill {
       font-size: clamp(0.7rem, 1.2vw, 0.82rem);
-      padding: 3px 8px;
+      padding: 3px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(18, 20, 46, 0.9);
+      border: 1px solid rgba(91, 156, 246, 0.2);
+      background: rgba(12, 18, 36, 0.95);
+      color: var(--accent);
+      font-weight: 300;
     }
     .two-column-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 6px 18px;
+      gap: 10px 18px;
     }
-    /* CONTACT BUTTONS */
+    .two-column-list div {
+      font-size: clamp(0.78rem, 1.5vw, 0.9rem);
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .two-column-list strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 2px;
+    }
     .contact-links {
       display: flex;
       flex-wrap: wrap;
@@ -270,19 +292,17 @@
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--border-subtle);
-      background: rgba(10, 12, 30, 0.95);
+      background: rgba(8, 12, 24, 0.98);
     }
     .contact-links a:hover {
       border-color: var(--accent);
     }
-    /* FOOTER */
     footer {
       margin-top: 26px;
       text-align: center;
       font-size: clamp(0.75rem, 1.2vw, 0.85rem);
       color: var(--muted);
     }
-    /* FADE-IN ANIMATION */
     .fade-in {
       opacity: 0;
       transform: translateY(15px);
@@ -292,7 +312,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* RESUME MODAL */
     .modal {
       position: fixed;
       inset: 0;
@@ -307,7 +326,7 @@
       display: flex;
     }
     .modal-dialog {
-      background: #23345c;
+      background: #080c18;
       width: min(900px, 95%);
       max-height: 90%;
       border-radius: 12px;
@@ -324,15 +343,15 @@
     }
     .modal-body {
       height: 70vh;
-      overflow: auto;                    /* allow scrolling inside PDF */
+      overflow: auto;
       border-radius: 10px;
-      -webkit-overflow-scrolling: touch; /* smoother mobile scroll */
+      -webkit-overflow-scrolling: touch;
     }
     .modal-body iframe {
       width: 100%;
       height: 100%;
       border: none;
-      background: #1a2440;
+      background: #050810;
     }
     .modal-close {
       position: absolute;
@@ -347,29 +366,15 @@
     .modal-note {
       font-size: 0.85rem;
       margin-top: 8px;
-      color: #d7dfff;
+      color: var(--muted);
     }
-    /* MOBILE */
     @media (max-width: 600px) {
-      body {
-        font-size: 0.85rem;
-      }
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      main {
-        grid-template-columns: 1fr;
-      }
-      .hero-cta {
-        flex-direction: column;
-      }
-      .hero-cta .btn {
-        width: 100%;
-        text-align: center;
-      }
-      .modal-body {
-        height: 80vh; /* taller on mobile */
-      }
+      body { font-size: 0.85rem; }
+      .hero { grid-template-columns: 1fr; }
+      main { grid-template-columns: 1fr; }
+      .hero-cta { flex-direction: column; }
+      .hero-cta .btn { width: 100%; text-align: center; }
+      .modal-body { height: 80vh; }
     }
   </style>
 </head>
@@ -383,7 +388,6 @@
         <div class="name">John Mark R. Gulmayo</div>
         <div class="tagline">Aspiring IT Support Specialist · Homelab Enthusiast · Calgary, AB</div>
       </div>
-      
       <nav>
         <ul>
           <li><a href="#about">About</a></li>
@@ -398,84 +402,58 @@
 
     <!-- HERO -->
     <section class="hero fade-in">
-      <!-- MAIN HERO -->
       <div class="hero-main">
         <div class="hero-kicker">IT Support · Homelab · Networking</div>
         <h1 class="hero-title">Building real-world IT skills from the ground up.</h1>
-        
-        <p class="hero-summary">
-          Entry-Level IT Support candidate with hands-on homelab, networking, and, troubleshotting experience.
-        </p>
-        
         <p class="hero-subtitle">
+          Entry-level IT Support candidate with hands-on homelab, networking, and troubleshooting experience.
           I manage a production-style homelab environment, troubleshoot hardware and network issues,
-          and bring years of customer-facing experience. I’m transitioning into an IT Support / Helpdesk role
+          and bring years of customer-facing experience. Transitioning into an IT Support or Helpdesk role
           where I can support users and keep systems running smoothly.
         </p>
-
         <div class="hero-tags">
-          <span class="hero-tag">Linux SysAdmin</span>
-          <span class="hero-tag">Win SysAdmin(Basic-Intermediate)</span>
+          <span class="hero-tag">Linux Administration</span>
+          <span class="hero-tag">Windows 10/11</span>
           <span class="hero-tag">Networking Fundamentals</span>
           <span class="hero-tag">VPN & Remote Access</span>
-          <span class="hero-tag">Homelab Server Dev</span>
-          <span class="hero-tag">Hardware Installation & Troubleshooting</span>
-          <span class="hero-tag">Self-Hosted Services Management</span>
-          <span class="hero-tag">Customer Servce & Technical Support</span>
-          <span class="hero-tag">GitHub & Web Dev</span>
-          <span class="hero-tag">Enterprice WiFi Basics</span>
-          <span class="hero-tag">Google IT Support Professional Certificate</span>
-          
+          <span class="hero-tag">Homelab Server Management</span>
+          <span class="hero-tag">Hardware Troubleshooting</span>
+          <span class="hero-tag">Self-Hosted Services</span>
+          <span class="hero-tag">Customer Service & Technical Support</span>
+          <span class="hero-tag">Enterprise Wi-Fi Basics</span>
+          <span class="hero-tag">Google IT Support Certificate</span>
         </div>
-
         <div class="hero-cta">
           <button class="btn btn-primary" id="openResumeBtn">Download Resume</button>
           <a href="#projects" class="btn btn-outline">View Projects</a>
         </div>
-
-        <p class="hero-note">
-          Actively seeking an entry-level IT Support / Helpdesk role in Calgary.
-        </p>
+        <p class="hero-note">Actively seeking an entry-level IT Support / Helpdesk role in Calgary.</p>
       </div>
 
-      <!-- Current Focus/Achievenments -->
       <div class="hero-side">
         <div class="info-card">
-         <div class="info-label">Recent Achievements</div>
+          <div class="info-label">Recent Achievement</div>
           <div class="info-main">Google IT Support Professional Certificate</div>
-      </div>
-      
-      <div class="hero-side">
+        </div>
         <div class="info-card">
           <div class="info-label">Current Focus</div>
-          <div class="info-main">Studying and Preparing for CompTIA+ Certification</div>
-          <div class="info-meta"></div>
+          <div class="info-main">CompTIA Security+ SY0-701</div>
+          <div class="info-meta">Enrolled at SAIT — Cybersecurity Analyst Program, September 2026</div>
         </div>
-
-        <div class="hero-side">
         <div class="info-card">
-          <div class="info-label">Addition To HomeLab</div>
-          <div class="info-main">Plex Media Server Deployment on Ubuntu Homelab</div>
-          <div class="info-meta">Hands-on Linux administration and remote access configuration</div>
+          <div class="info-label">Latest Homelab Addition</div>
+          <div class="info-main">Storage Expansion — 2 × 1TB Drives</div>
+          <div class="info-meta">Mounted and configured on Ubuntu Server</div>
         </div>
-     
-        
         <div class="info-card">
-          <div class="info-label">Latest Projects</div>
-          <div class="info-main">Ubuntu Homelab · Enterprise Wi-Fi Lab</div>
-          <div class="info-meta">Hands-on Networking & System Admin</div>
+          <div class="info-label">Latest Project</div>
+          <div class="info-main">Secure VPN Travel Router</div>
+          <div class="info-meta">Raspberry Pi 4 · OpenWrt · WireGuard · Mullvad</div>
         </div>
-        
         <div class="info-card">
-          <div class="info-label">Later Projects</div>
-          <div class="info-main">Compact Mini Server Rack</div>
-          <div class="info-meta">Advanced Networking & System Admin</div>
-        </div>
-    
-        <div class="info-card">
-          <div class="info-label">Future Plans</div>
-          <div class="info-main">Industry IT Certifications</div>
-          <div class="info-meta">CompTIA A+ · Network+ · CCNA</div>
+          <div class="info-label">Enterprise Lab</div>
+          <div class="info-main">WatchGuard · Nomadix · Aruba 2540</div>
+          <div class="info-meta">Configuring for cybersecurity practice</div>
         </div>
       </div>
     </section>
@@ -485,18 +463,17 @@
 
       <!-- LEFT COLUMN -->
       <div>
+
         <!-- ABOUT -->
         <section id="about" class="fade-in">
           <h2 class="section-title">About Me</h2>
           <p class="section-subtitle">A customer service professional transitioning into IT.</p>
-
           <div class="card">
             <p class="card-body">
-              I'm John, based in Calgary. After years working in hospitality roles requiring strong communication,
-              problem-solving, and reliability, I began building a homelab to learn IT the hands-on way. Now I troubleshoot
-              real hardware & software issues, run servers, and manage network services.
+              I'm John, based in Calgary. After years in hospitality roles requiring strong communication,
+              problem-solving, and reliability, I started building a homelab to learn IT the hands-on way.
+              I now troubleshoot real hardware and software issues, run servers, and manage network services daily.
             </p>
-
             <p class="card-body" style="margin-top: 8px;">
               My goal is to bring my service mindset and technical curiosity into a professional IT Support role
               where I can grow into system or network administration.
@@ -509,7 +486,6 @@
           <h2 class="section-title">Technical & Professional Skills</h2>
           <p class="section-subtitle">A blend of hands-on IT and customer-focused experience.</p>
 
-          <!-- Technical -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Technical Skills</div>
@@ -517,168 +493,193 @@
             <div class="card-body">
               <div class="two-column-list">
                 <div>
-                  <strong>Systems & OS</strong><br>
+                  <strong>Systems & OS</strong>
                   Ubuntu Server 22.04 LTS<br>
-                  Windows 10/11 • macOS<br>
-                  Command Line (CLI)
-                  Raspberry Pi • OpenWrt
+                  Windows 10/11 · macOS<br>
+                  Command Line (CLI)<br>
+                  Raspberry Pi · OpenWrt
                 </div>
-
                 <div>
-                  <strong>Networking</strong><br>
-                  TCP/IP • DNS basics<br>
-                  VPN & remote access<br>
-                  Home Network Design
+                  <strong>Networking</strong>
+                  TCP/IP · DNS<br>
+                  VPN & Remote Access<br>
+                  Home Network Design<br>
+                  VLAN Basics
                 </div>
-
                 <div>
-                  <strong>Services</strong><br>
-                  Pi-hole (DNS filtering)<br>
-                  Nextcloud (cloud server)<br>
-                  Remote Desktop · SSH
-                  Travel Router • Mullvad VPN
+                  <strong>Services</strong>
+                  Pi-hole · Nextcloud<br>
+                  Plex · AMP<br>
+                  Tailscale · SSH<br>
+                  Mullvad WireGuard VPN
                 </div>
-
                 <div>
-                  <strong>Hardware</strong><br>
-                  PC building & upgrades<br>
-                  RAM / CPU installation<br>
-                  Troubleshooting
+                  <strong>Hardware</strong>
+                  PC Building & Upgrades<br>
+                  RAM / CPU Installation<br>
+                  Drive Configuration<br>
+                  Hardware Troubleshooting
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Soft Skills -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Professional Skills</div>
             </div>
-            <ul class="bullet-list card-body">
-              <li>First point of contact experience similar to IT support.</li>
-              <li>Calm under pressure with strong communication.</li>
-              <li>Team coordination in fast environments.</li>
-              <li>Clear explanations for non-technical people.</li>
-            </ul>
+            <div class="card-body">
+              <ul class="check-list">
+                <li>First point of contact experience similar to IT helpdesk support.</li>
+                <li>Calm under pressure with clear and professional communication.</li>
+                <li>Team coordination in fast-paced environments.</li>
+                <li>Able to explain technical concepts to non-technical people.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- HOMELAB CAPABILITIES -->
+        <section class="fade-in">
+          <h2 class="section-title">Homelab Capabilities</h2>
+          <p class="section-subtitle">Real-world IT operations running at home.</p>
+          <div class="card">
+            <div class="card-body">
+              <ul class="dash-list">
+                <li>Support multiple wired and wireless client devices across managed switches and access points.</li>
+                <li>Maintain service availability across DNS, media, cloud storage, and game servers.</li>
+                <li>Troubleshoot network connectivity, service downtime, and device access issues.</li>
+                <li>Apply basic network segmentation and device management practices.</li>
+                <li>Use command-line tools and logs to diagnose system and service issues.</li>
+                <li>Manage and expand storage using Linux disk tools and fstab configuration.</li>
+              </ul>
+            </div>
           </div>
         </section>
 
         <!-- PROJECTS -->
         <section id="projects" class="fade-in">
-              <h2 class="card-title">HomeLab Capabilities</h2>
-              <p class="card-meta">Real-world IT operations simutaled at home.</p>
-
-              <div class="card">
-                  <ul class="bullet-list card body">
-                    <li>Support mutiple wired and wireless client device across managed switches and access points.</li>
-                    <li>Maintain service availability across DNS, media, cloud storage, and game servers.</li>
-                    <li>Troubleshoot network connectivity, service downtime, and device access issues.</li>
-                    <li>Apply basic network segmentation and device management practices.</li>
-                    <li>Use command-line tools and logs to diagnose system and service issues.</li>
-                  </ul>
-          </section>
-        
-        <section id="projects" class="fade-in">
           <h2 class="section-title">Technical Projects</h2>
           <p class="section-subtitle">Hands-on projects demonstrating real IT experience.</p>
-        </section>
-          
-          <!-- Homelab -->
+
           <div class="card">
             <div class="card-header">
               <div class="card-title">Ubuntu Homelab Server</div>
               <div class="card-meta">System Administration</div>
             </div>
             <div class="card-body">
-              <ul class="bullet-list">
+              <ul class="dash-list">
                 <li>Operate a Linux-based homelab hosting multiple always-on services for daily personal use.</li>
-                <li>Managed centralized DNS filtering with Pi-Hole to improve network performance and block unwanted traffic.</li>
-                <li>Deploy and Maintain NextCloud for private file storage and remote access.</li>
+                <li>Manage centralized DNS filtering with Pi-hole to improve network performance and block unwanted traffic.</li>
+                <li>Deploy and maintain Nextcloud for private file storage and remote access.</li>
                 <li>Run AMP for game server hosting and service management.</li>
                 <li>Host Plex Media Server for local media streaming.</li>
-                <li>Provide secure remote access using TailScale and SSH.</li>
+                <li>Provide secure remote access using Tailscale and SSH.</li>
                 <li>Monitor and troubleshoot services, connectivity issues, and device access.</li>
               </ul>
-
               <div class="pill-list">
                 <span class="pill">Ubuntu Server</span>
                 <span class="pill">SSH</span>
                 <span class="pill">Pi-hole</span>
                 <span class="pill">Nextcloud</span>
+                <span class="pill">Tailscale</span>
+                <span class="pill">Plex</span>
               </div>
             </div>
           </div>
 
-          <!-- Enterprise Wi-Fi -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Secure VPN Travel Router</div>
+              <div class="card-meta">Networking & Security</div>
+            </div>
+            <div class="card-body">
+              <ul class="dash-list">
+                <li>Built a portable VPN router using Raspberry Pi 4 and OpenWrt for encrypted internet access.</li>
+                <li>Configured WireGuard VPN with Mullvad for privacy and security.</li>
+                <li>Implemented a firewall-based kill switch to prevent data leaks if the VPN connection drops.</li>
+                <li>Configured persistent routing and auto-start functionality for reliable operation.</li>
+                <li>Troubleshot hardware compatibility issues and researched alternative solutions.</li>
+                <li>Demonstrated systematic problem-solving through network diagnostics and log analysis.</li>
+              </ul>
+              <div class="pill-list">
+                <span class="pill">OpenWrt</span>
+                <span class="pill">WireGuard</span>
+                <span class="pill">Mullvad VPN</span>
+                <span class="pill">Linux</span>
+                <span class="pill">Firewall</span>
+                <span class="pill">Raspberry Pi</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Enterprise Network Lab Expansion</div>
+              <div class="card-meta">Networking & Cybersecurity</div>
+            </div>
+            <div class="card-body">
+              <ul class="dash-list">
+                <li>Configuring WatchGuard Firebox M470 as perimeter firewall with IPS and VPN.</li>
+                <li>Setting up Aruba 2540 JL355A managed switch with VLANs and trunking.</li>
+                <li>Configuring Nomadix AG 5900 hospitality gateway with captive portal and bandwidth management.</li>
+                <li>Building hands-on experience with enterprise-grade hardware for cybersecurity study.</li>
+              </ul>
+              <div class="pill-list">
+                <span class="pill">WatchGuard(Firewall)</span>
+                <span class="pill">Aruba(Managed Switch)</span>
+                <span class="pill">Nomadix(Access Gateway)</span>
+                <span class="pill">VLANs</span>
+                <span class="pill">Firewall</span>
+                <span class="pill">IPS</span>
+              </div>
+            </div>
+          </div>
+
           <div class="card">
             <div class="card-header">
               <div class="card-title">Enterprise Wi-Fi Lab</div>
               <div class="card-meta">Networking</div>
             </div>
             <div class="card-body">
-              <ul class="bullet-list">
-                <li>Learning enterprise access point deployment.</li>
-                <li>Planning VLAN segmentation & multiple SSIDs.</li>
-                <li>Studying PoE, RF behavior, and AP onboarding.</li>
+              <ul class="dash-list">
+                <li>Learning enterprise access point deployment and configuration.</li>
+                <li>Planning VLAN segmentation and multiple SSIDs.</li>
+                <li>Studying PoE, RF behavior, and AP onboarding processes.</li>
               </ul>
-
               <div class="pill-list">
-                <span class="pill">Networking</span>
                 <span class="pill">Enterprise Wi-Fi</span>
                 <span class="pill">VLANs</span>
+                <span class="pill">Networking</span>
               </div>
             </div>
           </div>
 
-          <!-- Custom PC Build -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Custom Gaming PC Build</div>
               <div class="card-meta">Hardware</div>
             </div>
             <div class="card-body">
-              <ul class="bullet-list">
-                <li>Selected components and verified compatibility.</li>
+              <ul class="dash-list">
+                <li>Selected components and verified hardware compatibility.</li>
                 <li>Assembled full system with cable management.</li>
                 <li>Installed OS, drivers, and monitoring tools.</li>
-                <li>Troubleshot RGB/BIOS/driver issues.</li>
+                <li>Troubleshot RGB, BIOS, and driver issues.</li>
               </ul>
               <div class="pill-list">
                 <span class="pill">PC Building</span>
-                <span class="pill">Troubleshooting</span>
                 <span class="pill">Hardware</span>
+                <span class="pill">Troubleshooting</span>
               </div>
             </div>
           </div>
         </section>
       </div>
-      <!-- VPN Travel Router -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">Secure VPN Travel Router</div>
-          <div class="ard-meta">Networking & Security</div>
-        </div>
-        <div class="card-body">
-          <ul class="bullet-list">
-            <li>Built portable VPN router using Raspberry Pi 4 and OpenWrt for encrypted internet access.</li>
-            <li>Configured WireGuard VPN protocol with Mullvad servicec for privacy and security.</li>
-            <li>Implemented firewall-based kill switch to prevent data leaks if VPN connection drops.</li>
-            <li>Configured persistent routing and auto-start functionality for reliable operation.</li>
-            <li>Troubleshot hardware compatibility issues and researched alternative solutions.</li>
-            <li>Demonstrated systematic problem-solving through network diagnostics and log analysis.</li>
-          </ul>
-          <div class="pill-list">
-            <span class="pill">OpenWrt</span>
-            <span class="pill">WireGuard Mullvad VPN</span>
-            <span class="pill">Linux</span>
-            <span class="pill">Firewall Configuration</span>
-            <span class="pill">Network Routing</span>
-            <span class="pill">Raspeberry Pi</span>
-          </div>
-        </div>
-      </div>
+
       <!-- RIGHT COLUMN -->
       <div>
+
         <!-- EXPERIENCE -->
         <section id="experience" class="fade-in">
           <h2 class="section-title">Experience</h2>
@@ -686,14 +687,16 @@
 
           <div class="card">
             <div class="card-header">
-              <div class="card-title">Bellman / Valet Attendant</div>
-              <div class="card-meta">Residence Inn Calgary Downtown · 2023–Present</div>
+              <div class="card-title">Valet Attendant</div>
+              <div class="card-meta">Residence Inn Calgary Downtown · 2024–Present</div>
             </div>
-            <ul class="bullet-list card-body">
-              <li>Acted as the first point of contact for guests, providing warm welcomes and promptly resolving inquiries and concerns.</li>
-              <li>Coordinated seamlessly with the front desk and other departments to ensure a seamless and positive guest experience.</li>
-              <li>Maintained a clean and organized environment, ensuring a professional and welcoming atmosphere.</li>
-            </ul>
+            <div class="card-body">
+              <ul class="dash-list">
+                <li>Acted as first point of contact for guests, resolving inquiries and concerns promptly.</li>
+                <li>Coordinated with front desk and other departments to ensure a smooth guest experience.</li>
+                <li>Maintained a professional and organized working environment at all times.</li>
+              </ul>
+            </div>
           </div>
 
           <div class="card">
@@ -701,64 +704,74 @@
               <div class="card-title">Houseperson / Guest Environmental Expert</div>
               <div class="card-meta">Calgary Downtown Hotels · 2021–2024</div>
             </div>
-
-            <ul class="bullet-list card-body">
-              <li>Held progressive responsibilities requiring strong communication, attention to detail, time management, and a commitment to excellence.</li>
-              <li>Utilized mobile apps (Zello and HotSOS) for real-time communication and task coordination, showing adaptability with digital tools and workflows.</li>
-              <li>Managed inventory levels and implemented efficient procedures for linens and other supplies.</li>
-            </ul>
+            <div class="card-body">
+              <ul class="dash-list">
+                <li>Held progressive responsibilities requiring communication, attention to detail, and time management.</li>
+                <li>Used mobile apps including Zello and HotSOS for real-time task coordination.</li>
+                <li>Managed inventory and implemented efficient procedures for daily operations.</li>
+              </ul>
+            </div>
           </div>
 
           <div class="card">
             <div class="card-header">
               <div class="card-title">Education & Certifications</div>
             </div>
-            <!--Education & Certifications-->
-            <ul class="bullet-list card-body">
-              <li>High School Diploma – St. Mary’s High School.</li>
-              <li>Google IT Support Certificate</li>
-              <li>First Aid & WHMIS Certified.</li>
-              <li>Class 5 Driver’s License.</li>
-            </ul>
+            <div class="card-body">
+              <ul class="dash-list">
+                <li>High School Diploma — St. Mary's High School</li>
+                <li>Google IT Support Professional Certificate</li>
+                <li>CompTIA Security+ SY0-701 — In Progress</li>
+                <li>SAIT Cybersecurity Analyst Program — September 2026</li>
+                <li>First Aid & WHMIS Certified</li>
+                <li>Class 5 Driver's License</li>
+              </ul>
+            </div>
           </div>
         </section>
 
         <!-- ROADMAP -->
         <section id="roadmap" class="fade-in">
           <h2 class="section-title">Learning Roadmap</h2>
-          <p class="section-subtitle">Where I’m heading next.</p>
+          <p class="section-subtitle">Where I'm heading next.</p>
 
           <div class="card">
             <div class="card-header">
               <div class="card-title">Short-Term (0–6 Months)</div>
             </div>
-            <ul class="bullet-list card-body">
-              <li>Land first IT Support / Helpdesk role.</li>
-              <li>Continue homelab expansion.</li>
-              <li>Study for CompTIA A+.</li>
-            </ul>
+            <div class="card-body">
+              <ul class="dash-list">
+                <li>Land first IT Support or Helpdesk role in Calgary.</li>
+                <li>Pass CompTIA Security+ SY0-701 exam.</li>
+                <li>Continue expanding homelab with cybersecurity projects.</li>
+              </ul>
+            </div>
           </div>
 
           <div class="card">
             <div class="card-header">
               <div class="card-title">Mid-Term (6–18 Months)</div>
             </div>
-            <ul class="bullet-list card-body">
-              <li>Grow into junior SysAdmin roles.</li>
-              <li>Deepen networking knowledge (Net+).</li>
-              <li>Gain ticketing system experience.</li>
-            </ul>
+            <div class="card-body">
+              <ul class="dash-list">
+                <li>Begin SAIT Cybersecurity Analyst Program — September 2026.</li>
+                <li>Grow into junior SysAdmin or Security roles.</li>
+                <li>Build SIEM, firewall lab, and penetration testing projects.</li>
+              </ul>
+            </div>
           </div>
 
           <div class="card">
             <div class="card-header">
               <div class="card-title">Long-Term (2+ Years)</div>
             </div>
-            <ul class="bullet-list card-body">
-              <li>Become System or Network Administrator.</li>
-              <li>Earn more certifications (Azure, Security+).</li>
-              <li>Run advanced homelab environments.</li>
-            </ul>
+            <div class="card-body">
+              <ul class="dash-list">
+                <li>Move into a cybersecurity analyst or network security role.</li>
+                <li>Earn advanced certifications such as CySA+ or CCNA.</li>
+                <li>Run a fully segmented enterprise-grade homelab environment.</li>
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -766,24 +779,21 @@
         <section id="contact" class="fade-in">
           <h2 class="section-title">Contact</h2>
           <p class="section-subtitle">Open to IT Support opportunities in Calgary.</p>
-
           <div class="card">
             <p class="card-body">
               Feel free to reach out if you'd like to talk about opportunities,
-              my homelab projects, or how I can help your team.
+              my homelab projects, or how I can contribute to your team.
             </p>
-
             <div class="contact-links">
               <a href="mailto:janmattew102@yahoo.com">Email</a>
               <a href="https://www.linkedin.com/in/johnmark-gulmayo-85181a383" target="_blank">LinkedIn</a>
             </div>
           </div>
         </section>
-      </div>
 
+      </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="fade-in">
       Built by John Mark R. Gulmayo · Personal homelab projects only — no production client data.
     </footer>
@@ -794,39 +804,30 @@
   <div id="resumeModal" class="modal" aria-hidden="true">
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
       <button class="modal-close" type="button" aria-label="Close resume viewer">&times;</button>
-
       <h2 class="modal-title" id="resumeModalTitle">Resume – John Mark R. Gulmayo</h2>
-
       <div class="modal-body">
         <iframe src="Updated_Resume_portfolio.pdf" title="Resume PDF Viewer"></iframe>
       </div>
-
       <p class="modal-note">
-        If the PDF doesn’t load, you can
+        If the PDF doesn't load, you can
         <a href="Updated_Resume_portfolio.pdf" target="_blank" rel="noopener noreferrer">open it in a new tab</a>.
       </p>
     </div>
   </div>
 
-  <!-- SCRIPT: fade-in + modal + mobile behavior -->
   <script>
   document.addEventListener("DOMContentLoaded", () => {
-    /* ---- Fade-in on scroll (one-time, no twitch) ---- */
     const fadeEls = document.querySelectorAll(".fade-in");
-
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          // once it's visible, stop watching it (prevents twitching)
           obs.unobserve(entry.target);
         }
       });
     }, { threshold: 0.15 });
-
     fadeEls.forEach(el => observer.observe(el));
 
-    /* ---- Resume modal behavior ---- */
     const modal = document.getElementById("resumeModal");
     const openBtn = document.getElementById("openResumeBtn");
     const closeBtn = modal.querySelector(".modal-close");
@@ -834,49 +835,32 @@
     function isMobile() {
       return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     }
-    
     function openModal() {
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
     }
-
     function closeModal() {
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
     }
-
     function openResume() {
       if (isMobile()) {
-        // On mobile, open PDF directly in new tab
         window.open("Updated_Resume_portfolio.pdf", "_blank");
       } else {
-        // On desktop, use the nice modal viewer
         openModal();
       }
     }
-
-    if (openBtn) {
-      openBtn.addEventListener("click", openResume);
-    }
-
+    if (openBtn) openBtn.addEventListener("click", openResume);
     closeBtn.addEventListener("click", closeModal);
-
-    // Close on backdrop click
     modal.addEventListener("click", (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
+      if (event.target === modal) closeModal();
     });
-
-    // Close on Escape key
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && modal.classList.contains("is-open")) {
-        closeModal();
-      }
+      if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
     });
   });
-</script>
+  </script>
 </body>
 </html>
