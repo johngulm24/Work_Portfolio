@@ -1,0 +1,48 @@
+Project: Secure Private Inference Engine (AI-NAS)Technical Domain: Cybersecurity, DevOps, Hybrid-Cloud Networking
+
+1. Project OverviewThis project involved repurposing high-performance gaming hardware (Ryzen 5800X / Radeon 6900 XT) into a Self-Hosted AI NAS. The goal was to migrate away from third-party SaaS (Claude/ChatGPT) to a Private Inference model to ensure 100% data sovereignty and zero recurring costs.
+
+2. The Architecture (CIA Triad Focus)Confidentiality: All AI "thinking" happens locally. No data leaves the local network.Integrity: Docker containers isolate the AI engine from the host OS, preventing dependency drift and cross-service interference.Availability: Secured remote access via Tailscale Zero Trust VPN, providing 24/7 availability without risky port-forwarding.
+
+3. Deployment Steps & Commands
+
+A. Environment Hardening (Host OS)I configured OpenSSH on Windows 10 to allow remote management via Termius, but restricted it to the Tailscale interface for security.Command (PowerShell Admin):powershell# Ensure SSH is running
+Start-Service sshd
+Set-Service -Name sshd -StartupType 'Automatic'
+Use code with caution.
+
+B. Container Orchestration (Docker)I used Docker Desktop and WSL2 to deploy a multi-container stack. I used a docker-compose.yml to define the infrastructure as code.The docker-compose.yml File:yamlservices:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    volumes:
+      - C:/AI_PROJECT/ollama_storage:/root/.ollama
+    environment:
+      - HSA_OVERRIDE_GFX_VERSION=10.3.0  # AMD GPU Hardware ID
+    ports:
+      - "11434:11434"
+
+  librechat:
+    image: ghcr.io/danny-avila/librechat:latest
+    container_name: librechat
+    ports:
+      - "3080:3080"
+    volumes:
+      - C:/AI_PROJECT/librechat_storage:/app/api/data
+    environment:
+      - ENDPOINTS=ollama
+      - OLLAMA_BASE_URL=http://ollama:11434
+Use code with caution.
+C. Initializing the LLMTo provision the "brain" of the system, I used the following command to pull the Llama 3.1 8B model into the containerized volume:powershelldocker exec -it ollama ollama run llama3.1:8b
+Use code with caution.
+
+4. Key Security ImplementationsZero Trust Remote AccessInstead of exposing port 3080 to the open internet, I utilized Tailscale (WireGuard-based VPN).Implementation: The AI GUI is only accessible to devices authenticated in my private "Tailnet."Result: Reduced the attack surface to zero for external scans.Resource & Storage ManagementI performed system pruning and model decommissioning to prevent Resource Exhaustion (a common DoS vector).Cleanup Command:powershell# Remove over-sized or unneeded models
+docker exec -it ollama ollama rm gpt-oss:120b
+
+# Prune unused Docker objects to reclaim NVMe space
+docker system prune -a
+Use code with caution.
+
+5. Performance MetricsHardware: 
+AMD Radeon 6900 XT (16GB VRAM)Inference Speed: ~75 tokens/second (Llama 3.1 8B)Security Score: 0 open ports on router; 
+end-to-end encryption via Tailscale.
